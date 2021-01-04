@@ -325,3 +325,8 @@ appsettings.json
 config.ini
 config.js
 config.properties
+
+# Sample Configuration Files
+cred.json
+oidc.config.json
+sdsconfig.json
