@@ -457,6 +457,6 @@ deleteWindowValues(streamId: string, start, end): Observable<any>
 
 Tested using Node10.16.0 x64
 
-For the general steps or switch languages see the Task [ReadMe](../../)  
-For the main OCS page [ReadMe](https://github.com/osisoft/OSI-Samples-OCS)  
-For the main samples page on master [ReadMe](https://github.com/osisoft/OSI-Samples)
+For the main OCS waveform samples page on master [ReadMe](https://github.com/osisoft/OSI-Samples-OCS/blob/master/docs/SDS_WAVEFORM_README.md)  
+For the main OCS samples page on master [ReadMe](https://github.com/osisoft/OSI-Samples-OCS)  
+For the main OSIsoft samples page on master [ReadMe](https://github.com/osisoft/OSI-Samples)
