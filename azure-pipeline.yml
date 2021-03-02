@@ -2,38 +2,30 @@ trigger:
   batch: true
   branches:
     include:
-      - master
-  paths:
-    include:
-      - '/'
+      - main
 
 pr:
   branches:
     include:
-      - master
-  paths:
-    include:
-      - '/'
+      - main
 
 schedules:
   - cron: '0 0 * * 0'
     displayName: Weekly build
     branches:
       include:
-        - master
+        - main
     always: true
 
 resources:
   repositories:
-  - repository: templates
-    type: github
-    name: osisoft/OSI-Samples
-    endpoint: osisoft/OSI-Samples
+    - repository: templates
+      type: github
+      name: osisoft/OSI-Samples
+      endpoint: osisoft/OSI-Samples
 
 variables:
   - template: '/miscellaneous/build_templates/variables.yml@templates'
-  - name: projPath
-    value: '/'
   - name: CredFile
     value: cred.json
   - name: CredFileSdsConfig
@@ -51,65 +43,32 @@ variables:
 
 jobs:
   - job: Tests
-    strategy:
-      matrix:
-        linux:
-          imageName: ubuntu-latest
-        windows:
-          imageName: windows-latest
     pool:
-      vmImage: $(imageName)
+      name: 00-OSIManaged-Containers
+      demands: Agent.OS -equals Windows_NT
     steps:
-      # Issue in windows-latest template, see:
-      # https://developercommunity.visualstudio.com/content/problem/1170486/selenium-ui-test-can-no-longer-find-chrome-binary.html
-      - script: |
-          if not exist "C:\Program Files (x86)\Google" mkdir "C:\Program Files (x86)\Google"
-          if not exist "C:\Program Files (x86)\Google\Chrome" mkdir "C:\Program Files (x86)\Google\Chrome"
-          mklink /D "C:\Program Files (x86)\Google\Chrome\Application" "C:\Program Files\Google\Chrome\Application"
-        displayName: Set Chrome Path
-        condition: eq(variables['imageName'],'windows-latest')
-
       - template: '/miscellaneous/build_templates/config.yml@templates'
         parameters:
           fileOriginal: $(CredFile)
           fileLibrary: $(CredFileLibrary)
-          filePath: $(projPath)/e2e/src
+          filePath: e2e/src
 
       - template: '/miscellaneous/build_templates/config.yml@templates'
         parameters:
           fileOriginal: $(CredFileSdsConfig)
           fileLibrary: $(CredFileSdsConfigLibrary)
-          filePath: $(projPath)/src/app/config
+          filePath: src/app/config
 
       - template: '/miscellaneous/build_templates/config.yml@templates'
         parameters:
           fileOriginal: $(CredFileOidcConfig)
           fileLibrary: $(CredFileOidcConfigLibrary)
-          filePath: $(projPath)/src/app/config
+          filePath: src/app/config
 
-      - task: NodeTool@0
-        inputs:
-          versionSpec: '10.x'
-        displayName: 'Specify Node version'
-
-      - bash: npm ci
-        workingDirectory: $(Build.SourcesDirectory)$(projPath)
+      - script: npm ci
         displayName: 'Install dependencies'
 
-      # Currently same version on Windows & Ubuntu, preserving separate
-      # conditionals in case these images go out of sync in the future
-      - bash: npx webdriver-manager update --versions.chrome 87.0.4280.88
-        workingDirectory: $(Build.SourcesDirectory)$(projPath)
-        displayName: 'Ubuntu: Update webdriver-manager'
-        condition: eq(variables['imageName'],'ubuntu-latest')
-
-      - bash: npx webdriver-manager update --versions.chrome 87.0.4280.88
-        workingDirectory: $(Build.SourcesDirectory)$(projPath)
-        displayName: 'Update webdriver-manager'
-        condition: eq(variables['imageName'],'windows-latest')
-
       - script: npm run e2e
-        workingDirectory: $(Build.SourcesDirectory)$(projPath)/
         displayName: 'Run tests'
 
       - task: PublishTestResults@2
@@ -117,11 +76,9 @@ jobs:
           testResultsFormat: JUnit
           testResultsFiles: '*.xml'
           failTaskOnFailedTests: true
-          searchFolder: '$(Build.SourcesDirectory)$(projPath)/TestResults'
+          searchFolder: '$(Build.SourcesDirectory)/TestResults'
           testRunTitle: '$(Agent.JobName) on $(imageName)'
         displayName: 'Publish test results'
         condition: always()
 
-  - template: '/miscellaneous/build_templates/analysis.yml@templates'
-    parameters:
-      language: angular
+      - template: '/miscellaneous/build_templates/analysis.yml@templates'
