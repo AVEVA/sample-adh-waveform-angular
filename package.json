@@ -17,7 +17,7 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e --webdriver-update=false"
+    "e2e": "ng e2e"
   },
   "dependencies": {
     "@angular/animations": "~11.1.0",

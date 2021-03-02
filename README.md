@@ -63,7 +63,7 @@ To run the test, update `e2e/src/cred.json` with appropriate values.
 
 Note: this script may run into problems if you have never logged in from the device before to the account you are using.
 
-To run the test use `ng e2e --webdriver-update=false`.
+To run the test use `ng e2e`.
 
 ## Running the example
 
