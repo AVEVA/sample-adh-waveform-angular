@@ -51,19 +51,19 @@ jobs:
         parameters:
           fileOriginal: $(CredFile)
           fileLibrary: $(CredFileLibrary)
-          filePath: e2e/src
+          filePath: /e2e/src
 
       - template: '/miscellaneous/build_templates/config.yml@templates'
         parameters:
           fileOriginal: $(CredFileSdsConfig)
           fileLibrary: $(CredFileSdsConfigLibrary)
-          filePath: src/app/config
+          filePath: /src/app/config
 
       - template: '/miscellaneous/build_templates/config.yml@templates'
         parameters:
           fileOriginal: $(CredFileOidcConfig)
           fileLibrary: $(CredFileOidcConfigLibrary)
-          filePath: src/app/config
+          filePath: /src/app/config
 
       - script: npm ci
         displayName: 'Install dependencies'
