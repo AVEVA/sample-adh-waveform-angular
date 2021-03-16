@@ -68,10 +68,6 @@ jobs:
       - script: npm ci
         displayName: 'Install dependencies'
 
-      # - script: npx webdriver-manager update --versions.chrome 87.0.4280.88
-      #   workingDirectory: $(Build.SourcesDirectory)
-      #   displayName: 'Update webdriver-manager'
-
       - script: npm run e2e
         displayName: 'Run tests'
 
