@@ -1,5 +1,9 @@
 # Version History
 
+## 1.2.17 / 2021-03-15
+
+- Updated pipeline to auto-detect Chrome version
+
 ## 1.2.16 / 2021-03-02
 
 - Updated pipeline to use internal agent pool

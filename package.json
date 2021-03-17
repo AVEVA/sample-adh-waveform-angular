@@ -1,7 +1,7 @@
 {
   "name": "sds-angular",
   "description": "A sample that uses Sequential Data Store in an Angular-based environment.",
-  "version": "1.2.16",
+  "version": "1.2.17",
   "private": true,
   "author": "OSIsoft, LLC",
   "license": "Apache-2.0",
@@ -17,7 +17,7 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e --webdriver-update=false"
+    "e2e": "ng e2e"
   },
   "dependencies": {
     "@angular/animations": "~11.1.0",
