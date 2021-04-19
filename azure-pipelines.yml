@@ -68,7 +68,7 @@ jobs:
       - script: npm ci
         displayName: 'Install dependencies'
 
-      - script: npx webdriver-manager update --gecko false --versions.chrome
+      - script: npx webdriver-manager update --gecko false --standalone false
         displayName: 'Install chromedriver'
 
       - script: npm run e2e -- --webdriver-update false
