@@ -1,5 +1,9 @@
 # Version History
 
+## 1.2.18 / 2021-04-19
+
+- Fix auto detection of detect chrome version
+
 ## 1.2.17 / 2021-03-15
 
 - Updated pipeline to auto-detect Chrome version
