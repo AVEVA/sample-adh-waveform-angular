@@ -1,5 +1,10 @@
 # Version History
 
+## 1.2.20 / 2021-05-26
+
+- **Security Update**
+- Bump ini from 1.3.5 to 1.3.8
+
 ## 1.2.19 / 2021-05-21
 
 - Updated dependencies
