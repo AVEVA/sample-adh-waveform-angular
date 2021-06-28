@@ -106,6 +106,7 @@ export class SdsRestService {
   sdsUrl: string;
   tenantId: string;
   namespaceId: string;
+  communityId: string;
   apiVersion: string;
   options: any;
 
@@ -114,6 +115,7 @@ export class SdsRestService {
     this.sdsUrl = config.serviceBaseUri;
     this.tenantId = config.tenantId;
     this.namespaceId = config.namespaceId;
+    this.communityId = config.communityId;
     this.apiVersion = config.apiVersion;
     this.options = {
       observe: 'response',
@@ -403,8 +405,35 @@ export class SdsRestService {
   ): Observable<any> {
     const url =
       this.sdsUrl +
-      `/api/${this.apiVersion}/Tenants/${this.tenantId}/Namespaces/${this.namespaceId}/Streams/${streamId}` +
-      `/Data?startIndex=${start}&endIndex=${end}`;
+      `/api/${this.apiVersion}/Tenants/${this.tenantId}/Namespaces/${this.namespaceId}/Streams/` +
+      `${streamId}/Data?startIndex=${start}&endIndex=${end}`;
     return this.authHttp.delete(url, this.options);
+  }
+
+  getTenantRoles(): Observable<any> {
+    const url =
+      this.sdsUrl + `/api/${this.apiVersion}/Tenants/${this.tenantId}/Roles`;
+    return this.authHttp.get(url, this.options);
+  }
+
+  patchStreamAccessControl(streamId: string, patch: any[]): Observable<any> {
+    const url =
+      this.sdsUrl +
+      `/api/${this.apiVersion}/Tenants/${this.tenantId}/Namespaces/${this.namespaceId}/Streams/` +
+      `${streamId}/AccessControl`;
+    return this.authHttp.patch(url, JSON.stringify(patch), this.options);
+  }
+
+  getCommunityStreams(query: string): Observable<any> {
+    const url =
+      this.sdsUrl +
+      `/api/${this.apiVersion}-preview/Tenants/${this.tenantId}/Search/Communities/` +
+      `${this.communityId}/Streams?query=${query}`;
+    return this.authHttp.get(url, this.options);
+  }
+
+  getLastValueSelf(self: string): Observable<any> {
+    const url = self + '/Data/Last';
+    return this.authHttp.get(url, this.options);
   }
 }

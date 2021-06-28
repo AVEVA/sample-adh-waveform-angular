@@ -29,6 +29,8 @@ const targetIntTypeId = 'WaveDataTargetIntType';
 const autoStreamViewId = 'WaveDataAutoStreamView';
 const manualStreamViewId = 'WaveDataManualStreamView';
 
+const communityMemberRoleTypeId = 'f79a55da-7c76-4600-a809-0f62ca9971d9';
+
 class WaveDataCompound {
   Order: number;
   Multiplier: number;
@@ -135,8 +137,15 @@ export class DatasrcComponent {
   createCompoundTypeandStreamMessage: string;
   createAndRetrieveCompoundDataMessage: string;
   createAndRetrieveCompoundDataMessageData: string;
+  getTenantRolesResponse: string;
+  communityRoleId: string;
+  shareCommunityStreamResponse: string;
+  searchCommunityResponse: string;
+  communityStreams = [];
+  getCommunityLastResponse: string;
+  communityLast: string;
 
-  constructor(private sdsService: SdsRestService) {
+  constructor(public sdsService: SdsRestService) {
     this.hasEvents = false;
   }
 
@@ -558,21 +567,18 @@ export class DatasrcComponent {
       (res) => {
         this.sdsService.createStream(compoundStream).subscribe(
           (res2) => {
-            this.createCompoundTypeandStreamMessage = this.healthyResponseMessage(
-              res2
-            );
+            this.createCompoundTypeandStreamMessage =
+              this.healthyResponseMessage(res2);
           },
           (err) => {
-            this.createCompoundTypeandStreamMessage = this.unhealthyResponseMessage(
-              err
-            );
+            this.createCompoundTypeandStreamMessage =
+              this.unhealthyResponseMessage(err);
           }
         );
       },
       (err) => {
-        this.createCompoundTypeandStreamMessage = this.unhealthyResponseMessage(
-          err
-        );
+        this.createCompoundTypeandStreamMessage =
+          this.unhealthyResponseMessage(err);
       }
     );
   }
@@ -722,31 +728,27 @@ export class DatasrcComponent {
     list.push(this.newWaveDataCompoundEvent(10, 10));
     this.sdsService.insertValues(streamIdCompound, list).subscribe(
       (res) => {
-        this.createAndRetrieveCompoundDataMessage = this.healthyResponseMessage(
-          res
-        );
+        this.createAndRetrieveCompoundDataMessage =
+          this.healthyResponseMessage(res);
         this.sdsService
           .getWindowValues(streamIdCompound, '2|1', '10|8')
           .subscribe(
             (res2) => {
-              this.createAndRetrieveCompoundDataMessage = this.healthyResponseMessage(
-                res2
-              );
+              this.createAndRetrieveCompoundDataMessage =
+                this.healthyResponseMessage(res2);
               this.createAndRetrieveCompoundDataMessageData = JSON.stringify(
                 res2.body
               );
             },
             (err) => {
-              this.createAndRetrieveCompoundDataMessage = this.unhealthyResponseMessage(
-                err
-              );
+              this.createAndRetrieveCompoundDataMessage =
+                this.unhealthyResponseMessage(err);
             }
           );
       },
       (err) => {
-        this.createAndRetrieveCompoundDataMessage = this.unhealthyResponseMessage(
-          err
-        );
+        this.createAndRetrieveCompoundDataMessage =
+          this.unhealthyResponseMessage(err);
       }
     );
   }
@@ -976,6 +978,73 @@ export class DatasrcComponent {
       },
       (err) => {
         this.button20Message = this.unhealthyResponseMessage(err);
+      }
+    );
+  }
+
+  getCommunityRole() {
+    this.sdsService.getTenantRoles().subscribe(
+      (res) => {
+        this.getTenantRolesResponse = this.healthyResponseMessage(res);
+        const role = (res.body as any[]).find(
+          (r) =>
+            r.RoleTypeId === communityMemberRoleTypeId &&
+            r.CommunityId === this.sdsService.communityId
+        );
+        this.communityRoleId = role.Id;
+      },
+      (err) => {
+        this.getTenantRolesResponse = this.unhealthyResponseMessage(err);
+      }
+    );
+  }
+
+  shareCommunityStream() {
+    const patch = [
+      {
+        op: 'add',
+        path: '/RoleTrusteeAccessControlEntries/-',
+        value: {
+          AccessRights: 1,
+          AccessType: 0,
+          Trustee: {
+            ObjectId: this.communityRoleId,
+            TenantId: null,
+            Type: 'Role',
+          },
+        },
+      },
+    ];
+    this.sdsService.patchStreamAccessControl(streamId, patch).subscribe(
+      (res) => {
+        this.shareCommunityStreamResponse = this.healthyResponseMessage(res);
+      },
+      (err) => {
+        this.shareCommunityStreamResponse = this.unhealthyResponseMessage(err);
+      }
+    );
+  }
+
+  searchCommunity() {
+    this.sdsService.getCommunityStreams(streamId).subscribe(
+      (res) => {
+        this.searchCommunityResponse = this.healthyResponseMessage(res);
+        this.communityStreams = res.body as any[];
+      },
+      (err) => {
+        this.searchCommunityResponse = this.unhealthyResponseMessage(err);
+      }
+    );
+  }
+
+  getCommunityLast() {
+    this.sdsService.getLastValueSelf(this.communityStreams[0].Self).subscribe(
+      (res) => {
+        this.getCommunityLastResponse = this.healthyResponseMessage(res);
+        this.communityLast = JSON.stringify(res.body);
+      },
+      (err) => {
+        this.getCommunityLastResponse = this.unhealthyResponseMessage(err);
       }
     );
   }

@@ -49,6 +49,10 @@ describe('SDS Angular Sample', () => {
     await page.getMetadata();
     await page.patchMetaData();
     await page.getMetadata2();
+    await page.getCommunityRole();
+    await page.shareCommunityStream();
+    await page.searchCommunity();
+    await page.getCommunityLast();
     await page.deleteVal();
     await page.secondaryCreate();
     await page.secondaryUpdate();

@@ -116,6 +116,22 @@ export class AppPage {
     return this.helper('getAndPrintMetadata2', '');
   }
 
+  getCommunityRole(): any {
+    return this.helper('getTenantRoles', '20');
+  }
+
+  shareCommunityStream(): any {
+    return this.helper('shareCommunityStream', '20');
+  }
+
+  searchCommunity(): any {
+    return this.helper('searchCommunity', '20');
+  }
+
+  getCommunityLast(): any {
+    return this.helper('getCommunityLast', '20');
+  }
+
   deleteVal(): any {
     return this.helper('deleteAllValues', '20');
   }
