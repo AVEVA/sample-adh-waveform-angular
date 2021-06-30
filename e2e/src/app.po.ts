@@ -173,8 +173,8 @@ export class AppPage {
       .click()
       .then(() => {
         browser.driver.sleep(3000).then(() => {
-          browser.driver.findElement(by.css('a.osi-provider')).then((ele) => {
-            ele.click().then(() => {
+          browser.driver.findElements(by.css('a.osi-provider')).then((ele) => {
+            ele[1].click().then(() => {
               browser.driver.sleep(3000).then(() => {
                 this.loginWithOutlook(cred.login, cred.pass);
               });
