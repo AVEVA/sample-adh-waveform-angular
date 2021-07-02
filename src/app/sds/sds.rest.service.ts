@@ -103,9 +103,21 @@ export class SdsStreamViewMap {
 
 @Injectable()
 export class SdsRestService {
+  // Constants
+  TenantAdministratorRoleTypeId = '2dc742ab-39ea-4fc0-a39e-2bcb71c26a5f';
+  TenantContributorRoleTypeId = 'f1439595-e5a2-487f-8a4f-0627fefe75df';
+  TenantDataStewardRoleTypeId = '45b66433-5f57-420b-bbdf-8bbd60c1cd9d';
+  TenantMemberRoleTypeId = '7ad2b9ef-5386-4ead-ac9f-ad99c5c5b977';
+  TenantViewerRoleTypeId = 'e6cbf91e-0be8-4858-92b5-f88ecafd5574';
+
+  CommunityAdministratorRoleTypeId = 'b50b3349-fa9e-4a03-9220-cf99184b4645';
+  CommunityModeratorRoleTypeId = 'f49f69a6-61b2-423e-8ad5-d58841be441c';
+  CommunityMemberRoleTypeId = 'f79a55da-7c76-4600-a809-0f62ca9971d9';
+
   sdsUrl: string;
   tenantId: string;
   namespaceId: string;
+  communityId: string;
   apiVersion: string;
   options: any;
 
@@ -114,6 +126,7 @@ export class SdsRestService {
     this.sdsUrl = config.serviceBaseUri;
     this.tenantId = config.tenantId;
     this.namespaceId = config.namespaceId;
+    this.communityId = config.communityId;
     this.apiVersion = config.apiVersion;
     this.options = {
       observe: 'response',
@@ -403,8 +416,35 @@ export class SdsRestService {
   ): Observable<any> {
     const url =
       this.sdsUrl +
-      `/api/${this.apiVersion}/Tenants/${this.tenantId}/Namespaces/${this.namespaceId}/Streams/${streamId}` +
-      `/Data?startIndex=${start}&endIndex=${end}`;
+      `/api/${this.apiVersion}/Tenants/${this.tenantId}/Namespaces/${this.namespaceId}/Streams/` +
+      `${streamId}/Data?startIndex=${start}&endIndex=${end}`;
     return this.authHttp.delete(url, this.options);
+  }
+
+  getTenantRoles(): Observable<any> {
+    const url =
+      this.sdsUrl + `/api/${this.apiVersion}/Tenants/${this.tenantId}/Roles`;
+    return this.authHttp.get(url, this.options);
+  }
+
+  patchStreamAccessControl(streamId: string, patch: any[]): Observable<any> {
+    const url =
+      this.sdsUrl +
+      `/api/${this.apiVersion}/Tenants/${this.tenantId}/Namespaces/${this.namespaceId}/Streams/` +
+      `${streamId}/AccessControl`;
+    return this.authHttp.patch(url, JSON.stringify(patch), this.options);
+  }
+
+  getCommunityStreams(query: string): Observable<any> {
+    const url =
+      this.sdsUrl +
+      `/api/${this.apiVersion}-preview/Tenants/${this.tenantId}/Search/Communities/` +
+      `${this.communityId}/Streams?query=${query}`;
+    return this.authHttp.get(url, this.options);
+  }
+
+  getLastValueSelf(self: string): Observable<any> {
+    const url = self + '/Data/Last';
+    return this.authHttp.get(url, this.options);
   }
 }
