@@ -29,8 +29,6 @@ const targetIntTypeId = 'WaveDataTargetIntType';
 const autoStreamViewId = 'WaveDataAutoStreamView';
 const manualStreamViewId = 'WaveDataManualStreamView';
 
-const communityMemberRoleTypeId = 'f79a55da-7c76-4600-a809-0f62ca9971d9';
-
 class WaveDataCompound {
   Order: number;
   Multiplier: number;
@@ -988,7 +986,7 @@ export class DatasrcComponent {
         this.getTenantRolesResponse = this.healthyResponseMessage(res);
         const role = (res.body as any[]).find(
           (r) =>
-            r.RoleTypeId === communityMemberRoleTypeId &&
+            r.RoleTypeId === this.sdsService.CommunityMemberRoleTypeId &&
             r.CommunityId === this.sdsService.communityId
         );
         this.communityRoleId = role.Id;
