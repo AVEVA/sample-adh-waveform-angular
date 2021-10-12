@@ -23,21 +23,10 @@ resources:
       type: github
       name: osisoft/OSI-Samples
       endpoint: osisoft/OSI-Samples
+      ref: 'generalize-appsettings'
 
 variables:
   - template: '/miscellaneous/build_templates/variables.yml@templates'
-  - name: CredFile
-    value: cred.json
-  - name: CredFileSdsConfig
-    value: sdsconfig.json
-  - name: CredFileOidcConfig
-    value: oidc.config.json
-  - name: CredFileLibrary
-    value: product-readiness.sds_angular.cred.json
-  - name: CredFileSdsConfigLibrary
-    value: product-readiness.sds_angular.sds.json
-  - name: CredFileOidcConfigLibrary
-    value: product-readiness.sds_angular.oidc.json
   - name: analysisProject
     value: SDS_Angular
 
@@ -46,24 +35,37 @@ jobs:
     pool:
       name: 00-OSIManaged-Test
       demands: COMPUTERNAME -equals $(buildAgent)
+    variables:
+      - name: login
+        value: $(AuthorizationUsername)
+      - name: pass
+        value: $(AuthorizationPassword)
+      - name: client_id
+        value: $(ClientId)
+      - name: tenantId
+        value: $(TenantId)
+      - name: namespaceId
+        value: $(NamespaceId)
+      - name: communityId
+        value: $(CommunityId)
     steps:
-      - template: '/miscellaneous/build_templates/config.yml@templates'
+      - template: '/miscellaneous/build_templates/appsettings.yml@templates'
         parameters:
-          fileOriginal: $(CredFile)
-          fileLibrary: $(CredFileLibrary)
-          filePath: /e2e/src
+          secrets: 'AuthorizationUsername, AuthorizationPassword'
+          appsettings: cred.json
+          placeholder: cred.placeholder.json
 
-      - template: '/miscellaneous/build_templates/config.yml@templates'
+      - template: '/miscellaneous/build_templates/appsettings.yml@templates'
         parameters:
-          fileOriginal: $(CredFileSdsConfig)
-          fileLibrary: $(CredFileSdsConfigLibrary)
-          filePath: /src/app/config
+          secrets: 'ClientId'
+          appsettings: oidc.config.placeholder.json
+          placeholder: oidc.config.json
 
-      - template: '/miscellaneous/build_templates/config.yml@templates'
+      - template: '/miscellaneous/build_templates/appsettings.yml@templates'
         parameters:
-          fileOriginal: $(CredFileOidcConfig)
-          fileLibrary: $(CredFileOidcConfigLibrary)
-          filePath: /src/app/config
+          secrets: 'TenantId, NamespaceId, CommunityId'
+          appsettings: sdsconfig.json
+          placeholder: sdsconfig.placeholder.json
 
       - script: npm ci
         displayName: 'Install dependencies'
@@ -85,24 +87,37 @@ jobs:
     pool:
       name: 00-OSIManaged-Containers
       demands: Agent.OS -equals Windows_NT
+    variables:
+      - name: login
+        value: $(AuthorizationUsername)
+      - name: pass
+        value: $(AuthorizationPassword)
+      - name: client_id
+        value: $(ClientId)
+      - name: tenantId
+        value: $(TenantId)
+      - name: namespaceId
+        value: $(NamespaceId)
+      - name: communityId
+        value: $(CommunityId)
     steps:
-      - template: '/miscellaneous/build_templates/config.yml@templates'
+      - template: '/miscellaneous/build_templates/appsettings.yml@templates'
         parameters:
-          fileOriginal: $(CredFile)
-          fileLibrary: $(CredFileLibrary)
-          filePath: /e2e/src
+          secrets: 'AuthorizationUsername, AuthorizationPassword'
+          appsettings: cred.json
+          placeholder: cred.placeholder.json
 
-      - template: '/miscellaneous/build_templates/config.yml@templates'
+      - template: '/miscellaneous/build_templates/appsettings.yml@templates'
         parameters:
-          fileOriginal: $(CredFileSdsConfig)
-          fileLibrary: $(CredFileSdsConfigLibrary)
-          filePath: /src/app/config
+          secrets: 'ClientId'
+          appsettings: oidc.config.placeholder.json
+          placeholder: oidc.config.json
 
-      - template: '/miscellaneous/build_templates/config.yml@templates'
+      - template: '/miscellaneous/build_templates/appsettings.yml@templates'
         parameters:
-          fileOriginal: $(CredFileOidcConfig)
-          fileLibrary: $(CredFileOidcConfigLibrary)
-          filePath: /src/app/config
+          secrets: 'TenantId, NamespaceId, CommunityId'
+          appsettings: sdsconfig.json
+          placeholder: sdsconfig.placeholder.json
 
       - script: npm ci
         displayName: 'Install dependencies'
