@@ -87,13 +87,6 @@ jobs:
       - name: pass
         value: $(AuthorizationPassword)
       - name: client_id
-        value: $(ClientId)
-      - name: tenantId
-        value: $(TenantId)
-      - name: namespaceId
-        value: $(NamespaceId)
-      - name: communityId
-        value: $(CommunityId)
     steps:
       - template: '/miscellaneous/build_templates/appsettings.yml@templates'
         parameters:
@@ -104,8 +97,8 @@ jobs:
       - template: '/miscellaneous/build_templates/appsettings.yml@templates'
         parameters:
           secrets: 'ClientId'
-          appsettings: oidc.config.placeholder.json
-          placeholder: oidc.config.json
+          appsettings: oidc.config.json
+          placeholder: oidc.config.placeholder.json
 
       - template: '/miscellaneous/build_templates/appsettings.yml@templates'
         parameters:
