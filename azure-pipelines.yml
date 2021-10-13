@@ -40,7 +40,7 @@ jobs:
         value: $(AuthorizationUsername)
       - name: pass
         value: $(AuthorizationPassword)
-      - name: client_id
+      - name: AuthorizationCodeClientId
         value: $(ClientId)
     steps:
       - template: '/miscellaneous/build_templates/appsettings.yml@templates'
@@ -51,7 +51,7 @@ jobs:
 
       - template: '/miscellaneous/build_templates/appsettings.yml@templates'
         parameters:
-          secrets: 'ClientId'
+          secrets: 'AuthorizationCodeClientId'
           appsettings: oidc.config.json
           placeholder: oidc.config.placeholder.json
 
