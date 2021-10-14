@@ -39,8 +39,8 @@ jobs:
         value: $(AuthorizationUsername)
       - name: pass
         value: $(AuthorizationPassword)
-      - name: AuthorizationCodeClientId
-        value: $(ClientId)
+      - name: client_id
+        value: $(AuthorizationCodeClientId)
     steps:
       - template: '/miscellaneous/build_templates/appsettings.yml@templates'
         parameters:
