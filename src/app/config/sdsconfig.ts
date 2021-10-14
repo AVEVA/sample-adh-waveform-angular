@@ -1,7 +1,7 @@
 export interface SdsConfig {
-  serviceBaseUri: string;
-  tenantId: string;
-  namespaceId: string;
-  communityId: string;
-  apiVersion: string;
+  Resource: string;
+  TenantId: string;
+  NamespaceId: string;
+  CommunityId: string;
+  ApiVersion: string;
 }

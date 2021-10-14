@@ -115,19 +115,19 @@ export class SdsRestService {
   CommunityMemberRoleTypeId = 'f79a55da-7c76-4600-a809-0f62ca9971d9';
 
   sdsUrl: string;
-  tenantId: string;
-  namespaceId: string;
-  communityId: string;
-  apiVersion: string;
+  TenantId: string;
+  NamespaceId: string;
+  CommunityId: string;
+  ApiVersion: string;
   options: any;
 
   constructor(private authHttp: HttpClient) {
     const config = sdsConfig as SdsConfig;
-    this.sdsUrl = config.serviceBaseUri;
-    this.tenantId = config.tenantId;
-    this.namespaceId = config.namespaceId;
-    this.communityId = config.communityId;
-    this.apiVersion = config.apiVersion;
+    this.sdsUrl = config.Resource;
+    this.TenantId = config.TenantId;
+    this.NamespaceId = config.NamespaceId;
+    this.CommunityId = config.CommunityId;
+    this.ApiVersion = config.ApiVersion;
     this.options = {
       observe: 'response',
       headers: new HttpHeaders({
@@ -141,7 +141,7 @@ export class SdsRestService {
   createStream(sdsStream: SdsStream): Observable<any> {
     const url =
       this.sdsUrl +
-      `/api/${this.apiVersion}/Tenants/${this.tenantId}/Namespaces/${this.namespaceId}/Streams/${sdsStream.Id}`;
+      `/api/${this.ApiVersion}/Tenants/${this.TenantId}/Namespaces/${this.NamespaceId}/Streams/${sdsStream.Id}`;
     return this.authHttp.post(
       url,
       JSON.stringify(sdsStream).toString(),
@@ -152,7 +152,7 @@ export class SdsRestService {
   updateStream(sdsStream: SdsStream): Observable<any> {
     const url =
       this.sdsUrl +
-      `/api/${this.apiVersion}/Tenants/${this.tenantId}/Namespaces/${this.namespaceId}/Streams/${sdsStream.Id}`;
+      `/api/${this.ApiVersion}/Tenants/${this.TenantId}/Namespaces/${this.NamespaceId}/Streams/${sdsStream.Id}`;
     return this.authHttp.put(
       url,
       JSON.stringify(sdsStream).toString(),
@@ -163,28 +163,28 @@ export class SdsRestService {
   getStream(streamId: string): Observable<any> {
     const url =
       this.sdsUrl +
-      `/api/${this.apiVersion}/Tenants/${this.tenantId}/Namespaces/${this.namespaceId}/Streams/${streamId}`;
+      `/api/${this.ApiVersion}/Tenants/${this.TenantId}/Namespaces/${this.NamespaceId}/Streams/${streamId}`;
     return this.authHttp.get(url, this.options);
   }
 
   getStreams(query: string): Observable<any> {
     const url =
       this.sdsUrl +
-      `/api/${this.apiVersion}/Tenants/${this.tenantId}/Namespaces/${this.namespaceId}/Streams?query=${query}`;
+      `/api/${this.ApiVersion}/Tenants/${this.TenantId}/Namespaces/${this.NamespaceId}/Streams?query=${query}`;
     return this.authHttp.get(url, this.options);
   }
 
   deleteStream(streamId: string): Observable<any> {
     const url =
       this.sdsUrl +
-      `/api/${this.apiVersion}/Tenants/${this.tenantId}/Namespaces/${this.namespaceId}/Streams/${streamId}`;
+      `/api/${this.ApiVersion}/Tenants/${this.TenantId}/Namespaces/${this.NamespaceId}/Streams/${streamId}`;
     return this.authHttp.delete(url, this.options);
   }
 
   createTags(streamId: string, tags: string[]): Observable<any> {
     const url =
       this.sdsUrl +
-      `/api/${this.apiVersion}/Tenants/${this.tenantId}/Namespaces/${this.namespaceId}/Streams/${streamId}/Tags`;
+      `/api/${this.ApiVersion}/Tenants/${this.TenantId}/Namespaces/${this.NamespaceId}/Streams/${streamId}/Tags`;
     return this.authHttp.put(
       url,
       JSON.stringify(tags).toString(),
@@ -195,7 +195,7 @@ export class SdsRestService {
   createMetadata(streamId: string, metadata: object): Observable<any> {
     const url =
       this.sdsUrl +
-      `/api/${this.apiVersion}/Tenants/${this.tenantId}/Namespaces/${this.namespaceId}/Streams/${streamId}/Metadata`;
+      `/api/${this.ApiVersion}/Tenants/${this.TenantId}/Namespaces/${this.NamespaceId}/Streams/${streamId}/Metadata`;
     return this.authHttp.put(
       url,
       JSON.stringify(metadata).toString(),
@@ -206,7 +206,7 @@ export class SdsRestService {
   patchMetadata(streamId: string, metadata: object): Observable<any> {
     const url =
       this.sdsUrl +
-      `/api/${this.apiVersion}/Tenants/${this.tenantId}/Namespaces/${this.namespaceId}/Streams/${streamId}/Metadata`;
+      `/api/${this.ApiVersion}/Tenants/${this.TenantId}/Namespaces/${this.NamespaceId}/Streams/${streamId}/Metadata`;
     return this.authHttp.patch(
       url,
       JSON.stringify(metadata).toString(),
@@ -217,7 +217,7 @@ export class SdsRestService {
   getTags(streamId: string): Observable<any> {
     const url =
       this.sdsUrl +
-      `/api/${this.apiVersion}/Tenants/${this.tenantId}/Namespaces/${this.namespaceId}/Streams/${streamId}` +
+      `/api/${this.ApiVersion}/Tenants/${this.TenantId}/Namespaces/${this.NamespaceId}/Streams/${streamId}` +
       `/Tags`;
     return this.authHttp.get(url, this.options);
   }
@@ -225,7 +225,7 @@ export class SdsRestService {
   getMetadata(streamId: string): Observable<any> {
     const url =
       this.sdsUrl +
-      `/api/${this.apiVersion}/Tenants/${this.tenantId}/Namespaces/${this.namespaceId}/Streams/${streamId}` +
+      `/api/${this.ApiVersion}/Tenants/${this.TenantId}/Namespaces/${this.NamespaceId}/Streams/${streamId}` +
       `/Metadata`;
     return this.authHttp.get(url, this.options);
   }
@@ -233,7 +233,7 @@ export class SdsRestService {
   getLastValue(streamId: string): Observable<any> {
     const url =
       this.sdsUrl +
-      `/api/${this.apiVersion}/Tenants/${this.tenantId}/Namespaces/${this.namespaceId}/Streams/${streamId}` +
+      `/api/${this.ApiVersion}/Tenants/${this.TenantId}/Namespaces/${this.NamespaceId}/Streams/${streamId}` +
       `/Data/Last`;
     return this.authHttp.get(url, this.options);
   }
@@ -246,7 +246,7 @@ export class SdsRestService {
   ): Observable<any> {
     const url =
       this.sdsUrl +
-      `/api/${this.apiVersion}/Tenants/${this.tenantId}/Namespaces/${this.namespaceId}/Streams/${streamId}` +
+      `/api/${this.ApiVersion}/Tenants/${this.TenantId}/Namespaces/${this.NamespaceId}/Streams/${streamId}` +
       `/Data?startIndex=${start}&endIndex=${end}` +
       `${filter ? `&filter=${filter}` : ''}`;
     return this.authHttp.get(url, this.options);
@@ -263,7 +263,7 @@ export class SdsRestService {
   ): Observable<any> {
     const url =
       this.sdsUrl +
-      `/api/${this.apiVersion}/Tenants/${this.tenantId}/Namespaces/${this.namespaceId}/Streams/${streamId}` +
+      `/api/${this.ApiVersion}/Tenants/${this.TenantId}/Namespaces/${this.NamespaceId}/Streams/${streamId}` +
       `/Data/Sampled?startIndex=${start}&endIndex=${end}&intervals=${intervals}&sampleBy=${sampleBy}` +
       `${filter ? `&filter=${filter}` : ''}${
         streamViewId ? `&streamViewId=${streamViewId}` : ''
@@ -279,7 +279,7 @@ export class SdsRestService {
   ): Observable<any> {
     const url =
       this.sdsUrl +
-      `/api/${this.apiVersion}/Tenants/${this.tenantId}/Namespaces/${this.namespaceId}/Streams/${streamId}` +
+      `/api/${this.ApiVersion}/Tenants/${this.TenantId}/Namespaces/${this.NamespaceId}/Streams/${streamId}` +
       `/Data/Transform/Interpolated?startIndex=${start}&endIndex=${end}&count=${count}`;
     return this.authHttp.get(url, this.options);
   }
@@ -293,7 +293,7 @@ export class SdsRestService {
   ): Observable<any> {
     const url =
       this.sdsUrl +
-      `/api/${this.apiVersion}/Tenants/${this.tenantId}/Namespaces/${this.namespaceId}/Streams/${streamId}` +
+      `/api/${this.ApiVersion}/Tenants/${this.TenantId}/Namespaces/${this.NamespaceId}/Streams/${streamId}` +
       `/Data/Transform?startIndex=${start}&count=${count}&boundaryType=${boundary}` +
       `${streamViewId ? `&streamViewId=${streamViewId}` : ''}`;
     return this.authHttp.get(url, this.options);
@@ -308,7 +308,7 @@ export class SdsRestService {
   ): Observable<any> {
     const url =
       this.sdsUrl +
-      `/api/${this.apiVersion}/Tenants/${this.tenantId}/Namespaces/${this.namespaceId}/Streams/${streamId}` +
+      `/api/${this.ApiVersion}/Tenants/${this.TenantId}/Namespaces/${this.NamespaceId}/Streams/${streamId}` +
       `/Data/Transform?startIndex=${start}&count=${count}&boundaryType=${boundary}` +
       `${streamViewId ? `&streamViewId=${streamViewId}` : ''}&form=tableh`;
     return this.authHttp.get(url, this.options);
@@ -317,7 +317,7 @@ export class SdsRestService {
   getTypes(skip: number, count: number, query: string = ''): Observable<any> {
     const url =
       this.sdsUrl +
-      `/api/${this.apiVersion}/Tenants/${this.tenantId}/Namespaces/${this.namespaceId}/Types?skip=${skip}&count=${count}` +
+      `/api/${this.ApiVersion}/Tenants/${this.TenantId}/Namespaces/${this.NamespaceId}/Types?skip=${skip}&count=${count}` +
       `${query ? `&query=${query}` : ''}`;
     return this.authHttp.get(url, this.options);
   }
@@ -325,14 +325,14 @@ export class SdsRestService {
   createType(sdsType: SdsType): Observable<any> {
     const url =
       this.sdsUrl +
-      `/api/${this.apiVersion}/Tenants/${this.tenantId}/Namespaces/${this.namespaceId}/Types/${sdsType.Id}`;
+      `/api/${this.ApiVersion}/Tenants/${this.TenantId}/Namespaces/${this.NamespaceId}/Types/${sdsType.Id}`;
     return this.authHttp.post(url, sdsType, this.options);
   }
 
   updateStreamType(streamId: string, streamViewId: string): Observable<any> {
     const url =
       this.sdsUrl +
-      `/api/${this.apiVersion}/Tenants/${this.tenantId}/Namespaces/${this.namespaceId}/Streams/${streamId}/Type` +
+      `/api/${this.ApiVersion}/Tenants/${this.TenantId}/Namespaces/${this.NamespaceId}/Streams/${streamId}/Type` +
       `?streamViewId=${streamViewId}`;
     return this.authHttp.put(url, '', this.options);
   }
@@ -340,14 +340,14 @@ export class SdsRestService {
   deleteType(typeId: string): Observable<any> {
     const url =
       this.sdsUrl +
-      `/api/${this.apiVersion}/Tenants/${this.tenantId}/Namespaces/${this.namespaceId}/Types/${typeId}`;
+      `/api/${this.ApiVersion}/Tenants/${this.TenantId}/Namespaces/${this.NamespaceId}/Types/${typeId}`;
     return this.authHttp.delete(url, this.options);
   }
 
   insertValues(streamId: string, events: Array<any>): Observable<any> {
     const url =
       this.sdsUrl +
-      `/api/${this.apiVersion}/Tenants/${this.tenantId}/Namespaces/${this.namespaceId}/Streams/${streamId}/Data`;
+      `/api/${this.ApiVersion}/Tenants/${this.TenantId}/Namespaces/${this.NamespaceId}/Streams/${streamId}/Data`;
     return this.authHttp.post(
       url,
       JSON.stringify(events).toString(),
@@ -358,7 +358,7 @@ export class SdsRestService {
   updateValues(streamId: string, events: Array<any>): Observable<any> {
     const url =
       this.sdsUrl +
-      `/api/${this.apiVersion}/Tenants/${this.tenantId}/Namespaces/${this.namespaceId}/Streams/${streamId}/Data`;
+      `/api/${this.ApiVersion}/Tenants/${this.TenantId}/Namespaces/${this.NamespaceId}/Streams/${streamId}/Data`;
     return this.authHttp.put(
       url,
       JSON.stringify(events).toString(),
@@ -369,7 +369,7 @@ export class SdsRestService {
   replaceValues(streamId: string, events: Array<any>): Observable<any> {
     const url =
       this.sdsUrl +
-      `/api/${this.apiVersion}/Tenants/${this.tenantId}/Namespaces/${this.namespaceId}/Streams/${streamId}/Data?allowCreate=false`;
+      `/api/${this.ApiVersion}/Tenants/${this.TenantId}/Namespaces/${this.NamespaceId}/Streams/${streamId}/Data?allowCreate=false`;
     return this.authHttp.put(
       url,
       JSON.stringify(events).toString(),
@@ -380,7 +380,7 @@ export class SdsRestService {
   createStreamView(sdsStreamView: SdsStreamView): Observable<any> {
     const url =
       this.sdsUrl +
-      `/api/${this.apiVersion}/Tenants/${this.tenantId}/Namespaces/${this.namespaceId}/StreamViews/${sdsStreamView.Id}`;
+      `/api/${this.ApiVersion}/Tenants/${this.TenantId}/Namespaces/${this.NamespaceId}/StreamViews/${sdsStreamView.Id}`;
     return this.authHttp.post(
       url,
       JSON.stringify(sdsStreamView).toString(),
@@ -391,21 +391,21 @@ export class SdsRestService {
   deleteStreamView(streamViewId: string): Observable<any> {
     const url =
       this.sdsUrl +
-      `/api/${this.apiVersion}/Tenants/${this.tenantId}/Namespaces/${this.namespaceId}/StreamViews/${streamViewId}`;
+      `/api/${this.ApiVersion}/Tenants/${this.TenantId}/Namespaces/${this.NamespaceId}/StreamViews/${streamViewId}`;
     return this.authHttp.delete(url, this.options);
   }
 
   getStreamViewMap(streamViewId: string): Observable<any> {
     const url =
       this.sdsUrl +
-      `/api/${this.apiVersion}/Tenants/${this.tenantId}/Namespaces/${this.namespaceId}/StreamViews/${streamViewId}/Map`;
+      `/api/${this.ApiVersion}/Tenants/${this.TenantId}/Namespaces/${this.NamespaceId}/StreamViews/${streamViewId}/Map`;
     return this.authHttp.get(url, this.options);
   }
 
   deleteValue(streamId: string, index: string): Observable<any> {
     const url =
       this.sdsUrl +
-      `/api/${this.apiVersion}/Tenants/${this.tenantId}/Namespaces/${this.namespaceId}/Streams/${streamId}/Data?index=${index}`;
+      `/api/${this.ApiVersion}/Tenants/${this.TenantId}/Namespaces/${this.NamespaceId}/Streams/${streamId}/Data?index=${index}`;
     return this.authHttp.delete(url, this.options);
   }
 
@@ -416,21 +416,21 @@ export class SdsRestService {
   ): Observable<any> {
     const url =
       this.sdsUrl +
-      `/api/${this.apiVersion}/Tenants/${this.tenantId}/Namespaces/${this.namespaceId}/Streams/` +
+      `/api/${this.ApiVersion}/Tenants/${this.TenantId}/Namespaces/${this.NamespaceId}/Streams/` +
       `${streamId}/Data?startIndex=${start}&endIndex=${end}`;
     return this.authHttp.delete(url, this.options);
   }
 
   getTenantRoles(): Observable<any> {
     const url =
-      this.sdsUrl + `/api/${this.apiVersion}/Tenants/${this.tenantId}/Roles`;
+      this.sdsUrl + `/api/${this.ApiVersion}/Tenants/${this.TenantId}/Roles`;
     return this.authHttp.get(url, this.options);
   }
 
   patchStreamAccessControl(streamId: string, patch: any[]): Observable<any> {
     const url =
       this.sdsUrl +
-      `/api/${this.apiVersion}/Tenants/${this.tenantId}/Namespaces/${this.namespaceId}/Streams/` +
+      `/api/${this.ApiVersion}/Tenants/${this.TenantId}/Namespaces/${this.NamespaceId}/Streams/` +
       `${streamId}/AccessControl`;
     return this.authHttp.patch(url, JSON.stringify(patch), this.options);
   }
@@ -438,8 +438,8 @@ export class SdsRestService {
   getCommunityStreams(query: string): Observable<any> {
     const url =
       this.sdsUrl +
-      `/api/${this.apiVersion}-preview/Tenants/${this.tenantId}/Search/Communities/` +
-      `${this.communityId}/Streams?query=${query}`;
+      `/api/${this.ApiVersion}-preview/Tenants/${this.TenantId}/Search/Communities/` +
+      `${this.CommunityId}/Streams?query=${query}`;
     return this.authHttp.get(url, this.options);
   }
 
