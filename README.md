@@ -1,6 +1,6 @@
 ﻿# Sequential Data Store Angular Sample
 
-**Version:** 1.3.2
+**Version:** 1.3.3
 
 [![Build Status](https://dev.azure.com/osieng/engineering/_apis/build/status/product-readiness/OCS/osisoft.sample-ocs-waveform-angular?repoName=osisoft%2Fsample-ocs-waveform-angular&branchName=main)](https://dev.azure.com/osieng/engineering/_build/latest?definitionId=2626&repoName=osisoft%2Fsample-ocs-waveform-angular&branchName=main)
 
@@ -44,15 +44,15 @@ Replace the `client_id` in `src/app/config/oidc.config.json` with the Client ID 
 }
 ```
 
-Also edit the `tenantId` and `namespaceId` in `src/app/config/sdsconfig.json`.
+Also edit the `TenantId` and `NamespaceId` in `src/app/config/sdsconfig.json`.
 
 ```json
 {
-  "serviceBaseUri": "https://dat-b.osisoft.com",
-  "tenantId": "REPLACE_WITH_TENANT_ID",
-  "namespaceId": "REPLACE_WITH_NAMESPACE_ID",
-  "communityId": "",
-  "apiVersion": "v1"
+  "Resource": "https://dat-b.osisoft.com",
+  "TenantId": "REPLACE_WITH_TENANT_ID",
+  "NamespaceId": "REPLACE_WITH_NAMESPACE_ID",
+  "CommunityId": "",
+  "ApiVersion": "v1"
 }
 ```
 
@@ -68,7 +68,7 @@ To run the test use `ng e2e --webdriver-update=false`.
 
 ### Community
 
-If you would like to see an example of basic interactions with an OCS community, enter an existing community id in the `communityId` field of the configuration. Make sure to also grant the appropriate "Community Member" role to the Client-Credentials Client used by the sample. If you have not yet created a community, see the [documentation](https://docs.osisoft.com/bundle/ocs/page/communities/create-a-community.html) for instructions. Entering a community id will enable three additional steps in the sample.
+If you would like to see an example of basic interactions with an OCS community, enter an existing community id in the `CommunityId` field of the configuration. Make sure to also grant the appropriate "Community Member" role to the Client-Credentials Client used by the sample. If you have not yet created a community, see the [documentation](https://docs.osisoft.com/bundle/ocs/page/communities/create-a-community.html) for instructions. Entering a community id will enable three additional steps in the sample.
 
 If you are not using OCS communities, leave the `communityId` property empty.
 

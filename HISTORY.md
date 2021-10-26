@@ -1,5 +1,10 @@
 # Version History
 
+## 1.3.3 / 2021-10-21
+
+- Update pipelines to use Azure Key Vault for secrets
+- Changed sdsconfig.json to use Pascal Case
+
 ## 1.3.2 / 2021-08-11
 
 - Updated dependencies
