@@ -987,7 +987,7 @@ export class DatasrcComponent {
         const role = (res.body as any[]).find(
           (r) =>
             r.RoleTypeId === this.sdsService.CommunityMemberRoleTypeId &&
-            r.CommunityId === this.sdsService.communityId
+            r.CommunityId === this.sdsService.CommunityId
         );
         this.communityRoleId = role.Id;
       },

@@ -26,7 +26,7 @@ export class AppComponent implements OnInit {
     this.authConfig = {
       ...configFromJson,
       userStore: new WebStorageStateStore({ store: window.localStorage }),
-      acr_values: `tenant:${this.sdsConfig.tenantId}`,
+      acr_values: `tenant:${this.sdsConfig.TenantId}`,
       response_type: 'code',
       scope: 'openid ocsapi',
       filterProtocolClaims: true,

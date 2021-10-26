@@ -1,7 +1,7 @@
 {
-  "serviceBaseUri": "https://dat-b.osisoft.com",
-  "tenantId": "REPLACE_WITH_TENANT_ID",
-  "namespaceId": "REPLACE_WITH_NAMESPACE_ID",
-  "communityId": "",
-  "apiVersion": "v1"
+  "Resource": "https://dat-b.osisoft.com",
+  "TenantId": "REPLACE_WITH_TENANT_ID",
+  "NamespaceId": "REPLACE_WITH_NAMESPACE_ID",
+  "CommunityId": "",
+  "ApiVersion": "v1"
 }
