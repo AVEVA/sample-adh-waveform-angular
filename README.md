@@ -1,6 +1,6 @@
 ﻿# Sequential Data Store Angular Sample
 
-**Version:** 1.3.3
+**Version:** 1.3.4
 
 [![Build Status](https://dev.azure.com/osieng/engineering/_apis/build/status/product-readiness/OCS/osisoft.sample-ocs-waveform-angular?repoName=osisoft%2Fsample-ocs-waveform-angular&branchName=main)](https://dev.azure.com/osieng/engineering/_build/latest?definitionId=2626&repoName=osisoft%2Fsample-ocs-waveform-angular&branchName=main)
 
@@ -464,6 +464,6 @@ deleteWindowValues(streamId: string, start, end): Observable<any>
 
 Tested using Node10.16.0 x64
 
-For the main OCS waveform samples page [ReadMe](https://github.com/osisoft/OSI-Samples-OCS/blob/main/docs/SDS_WAVEFORM_README.md)  
+For the main OCS waveform samples page [ReadMe](https://github.com/osisoft/OSI-Samples-OCS/blob/main/docs/SDS_WAVEFORM.md)  
 For the main OCS samples page [ReadMe](https://github.com/osisoft/OSI-Samples-OCS)  
 For the main OSIsoft samples page [ReadMe](https://github.com/osisoft/OSI-Samples)
