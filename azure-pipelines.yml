@@ -82,12 +82,12 @@ jobs:
 
   - template: '/miscellaneous/build_templates/code-analysis.yml@templates'
     variables:
-        - name: login
-          value: $(AuthorizationUsername)
-        - name: pass
-          value: $(AuthorizationPassword)
-        - name: client_id
-          value: $(AuthorizationCodeClientId)
+      - name: login
+        value: $(AuthorizationUsername)
+      - name: pass
+        value: $(AuthorizationPassword)
+      - name: client_id
+        value: $(AuthorizationCodeClientId)
     parameters:
       buildSteps:
         - template: '/miscellaneous/build_templates/appsettings.yml@templates'
