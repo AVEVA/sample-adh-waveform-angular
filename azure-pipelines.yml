@@ -32,19 +32,18 @@ variables:
   - template: '/miscellaneous/build_templates/variables.yml@templates'
   - name: analysisProject
     value: SDS_Angular
+  - name: login
+    value: $(AuthorizationUsername)
+  - name: pass
+    value: $(AuthorizationPassword)
+  - name: client_id
+    value: $(AuthorizationCodeClientId)
 
 jobs:
   - job: Tests
     pool:
       name: 00-OSIManaged-Containers
       demands: Agent.OS -equals Windows_NT
-    variables:
-      - name: login
-        value: $(AuthorizationUsername)
-      - name: pass
-        value: $(AuthorizationPassword)
-      - name: client_id
-        value: $(AuthorizationCodeClientId)
     steps:
       - template: '/miscellaneous/build_templates/appsettings.yml@templates'
         parameters:
@@ -81,13 +80,6 @@ jobs:
         condition: always()
 
   - template: '/miscellaneous/build_templates/code-analysis.yml@templates'
-    variables:
-      - name: login
-        value: $(AuthorizationUsername)
-      - name: pass
-        value: $(AuthorizationPassword)
-      - name: client_id
-        value: $(AuthorizationCodeClientId)
     parameters:
       buildSteps:
         - template: '/miscellaneous/build_templates/appsettings.yml@templates'
