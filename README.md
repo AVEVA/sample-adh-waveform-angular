@@ -1,8 +1,11 @@
 ﻿# Sequential Data Store Angular Sample
 
-**Version:** 1.3.6
+| :loudspeaker: **Notice**: Samples have been updated to reflect that they work on AVEVA Data Hub. The samples also work on OSIsoft Cloud Services unless otherwise noted. |
+| -----------------------------------------------------------------------------------------------|  
 
-[![Build Status](https://dev.azure.com/osieng/engineering/_apis/build/status/product-readiness/OCS/osisoft.sample-ocs-waveform-angular?repoName=osisoft%2Fsample-ocs-waveform-angular&branchName=main)](https://dev.azure.com/osieng/engineering/_build/latest?definitionId=2626&repoName=osisoft%2Fsample-ocs-waveform-angular&branchName=main)
+**Version:** 1.3.7
+
+[![Build Status](https://dev.azure.com/osieng/engineering/_apis/build/status/product-readiness/ADH/aveva.sample-adh-waveform-angular?branchName=main)](https://dev.azure.com/osieng/engineering/_build/latest?definitionId=2626&branchName=main)
 
 **WARNING:** The web server used in this sample is intended for use in testing or debugging sample applications locally. It has not been reviewed for security issues.
 
@@ -16,7 +19,7 @@ You must have the following software installed on your computer:
 
 - NodeJs and NPM
 - Angular CLI (`npm install -g @angular/cli`)
-- A modern Evergreen browser (OSIsoft recommends Google Chrome or Mozilla Firefox)
+- A modern Evergreen browser (AVEVA recommends Google Chrome or Mozilla Firefox)
 
 This application by default will use Port 4200
 
@@ -26,17 +29,17 @@ This example was developed against Node 10.14.1
 
 ## Preparation
 
-The SDS Service is secured by obtaining tokens from our OAuth2 identity provider to authenticate clients against the SDS server. Contact OSIsoft support to obtain a tenant for use with SDS.
+The SDS Service is secured by obtaining tokens from our OAuth2 identity provider to authenticate clients against the SDS server. Contact AVEVA support to obtain a tenant for use with SDS.
 
-The sample code includes several placeholder strings that must be modified with values you received from OSIsoft. The sample is configured using two files, [oidc.config.placeholder.json](src/app/config/oidc.config.placeholder.json) and [sdsconfig.placeholder.json](src/app/config/sdsconfig.placeholder.json). Before editing, rename these files to `oidc.config.json` and `sdsconfig.placeholder.json`. This repository's `.gitignore` rules should prevent these files from ever being checked in to any fork or branch, to ensure sensitive information is not compromised.
+The sample code includes several placeholder strings that must be modified with values you received from AVEVA. The sample is configured using two files, [oidc.config.placeholder.json](src/app/config/oidc.config.placeholder.json) and [sdsconfig.placeholder.json](src/app/config/sdsconfig.placeholder.json). Before editing, rename these files to `oidc.config.json` and `sdsconfig.placeholder.json`. This repository's `.gitignore` rules should prevent these files from ever being checked in to any fork or branch, to ensure sensitive information is not compromised.
 
-Register an Authorization Code client in OCS, or modify an existing client, and ensure that the registered client in OCS contains `http://localhost:4200/auth-callback.html` in the list of allowed Redirect URLs, and `https://localhost:4200/` in the list of allowed Logout URLs.
+Register an Authorization Code client in ADH, or modify an existing client, and ensure that the registered client in ADH contains `http://localhost:4200/auth-callback.html` in the list of allowed Redirect URLs, and `https://localhost:4200/` in the list of allowed Logout URLs.
 
 Replace the `client_id` in `src/app/config/oidc.config.json` with the Client ID of the client you registered.
 
 ```json
 {
-  "authority": "https://dat-b.osisoft.com/identity",
+  "authority": "https://uswe.datahub.connect.aveva.com/identity",
   "redirect_uri": "http://localhost:4200/auth-callback/",
   "post_logout_redirect_uri": "http://localhost:4200/",
   "silent_redirect_uri": "http://localhost:4200/auth-callback/",
@@ -48,7 +51,7 @@ Also edit the `TenantId` and `NamespaceId` in `src/app/config/sdsconfig.json`.
 
 ```json
 {
-  "Resource": "https://dat-b.osisoft.com",
+  "Resource": "https://uswe.datahub.connect.aveva.com",
   "TenantId": "REPLACE_WITH_TENANT_ID",
   "NamespaceId": "REPLACE_WITH_NAMESPACE_ID",
   "CommunityId": "",
@@ -68,9 +71,9 @@ To run the test use `ng e2e --webdriver-update=false`.
 
 ### Community
 
-If you would like to see an example of basic interactions with an OCS community, enter an existing community id in the `CommunityId` field of the configuration. Make sure to also grant the appropriate "Community Member" role to the Client-Credentials Client used by the sample. If you have not yet created a community, see the [documentation](https://docs.osisoft.com/bundle/ocs/page/communities/create-a-community.html) for instructions. Entering a community id will enable three additional steps in the sample.
+If you would like to see an example of basic interactions with an ADH community, enter an existing community id in the `CommunityId` field of the configuration. Make sure to also grant the appropriate "Community Member" role to the Client-Credentials Client used by the sample. If you have not yet created a community, see the [documentation](https://docs.osisoft.com/bundle/ocs/page/communities/create-a-community.html) for instructions. Entering a community id will enable three additional steps in the sample.
 
-If you are not using OCS communities, leave the `communityId` property empty.
+If you are not using ADH communities, leave the `communityId` property empty.
 
 ## Running the example
 
@@ -464,6 +467,6 @@ deleteWindowValues(streamId: string, start, end): Observable<any>
 
 Tested using Node10.16.0 x64
 
-For the main OCS waveform samples page [ReadMe](https://github.com/osisoft/OSI-Samples-OCS/blob/main/docs/SDS_WAVEFORM.md)  
-For the main OCS samples page [ReadMe](https://github.com/osisoft/OSI-Samples-OCS)  
-For the main OSIsoft samples page [ReadMe](https://github.com/osisoft/OSI-Samples)
+For the main ADH waveform samples page [ReadMe](https://github.com/osisoft/OSI-Samples-OCS/blob/main/docs/SDS_WAVEFORM.md)  
+For the main ADH samples page [ReadMe](https://github.com/osisoft/OSI-Samples-OCS)  
+For the main AVEVA samples page [ReadMe](https://github.com/osisoft/OSI-Samples)
