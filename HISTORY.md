@@ -3,6 +3,7 @@
 ## 1.3.7 / 2022-01-27
 
 - Updated for AVEVA Data Hub
+- Updated dependencies
 
 ## 1.3.6 / 2021-12-07
 
