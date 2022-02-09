@@ -12,6 +12,7 @@ exports.config = {
       args: ['--headless', '--no-sandbox'],
     },
   },
+  chromeDriver: '../node_modules/protractor/node_modules/webdriver-manager/selenium/chromedriver_96.0.4664.93',
   directConnect: true,
   baseUrl: 'http://localhost:4200/',
   framework: 'jasmine',

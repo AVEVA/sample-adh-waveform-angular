@@ -59,7 +59,7 @@ jobs:
 
       - template: '/miscellaneous/build_templates/appsettings.yml@templates'
         parameters:
-          secrets: 'TenantId, NamespaceId, CommunityId'
+          secrets: 'TenantId, NamespaceId, CommunityId, Resource'
           appsettings: sdsconfig.json
           placeholder: sdsconfig.placeholder.json
 
