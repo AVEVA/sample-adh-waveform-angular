@@ -38,6 +38,8 @@ variables:
     value: $(AuthorizationPassword)
   - name: client_id
     value: $(AuthorizationCodeClientId)
+  - name: authority
+    value: '$(Resource)/identity'
 
 jobs:
   - job: Tests
@@ -53,7 +55,7 @@ jobs:
 
       - template: '/miscellaneous/build_templates/appsettings.yml@templates'
         parameters:
-          secrets: 'AuthorizationCodeClientId'
+          secrets: 'AuthorizationCodeClientId, Resource'
           appsettings: oidc.config.json
           placeholder: oidc.config.placeholder.json
 
@@ -90,13 +92,13 @@ jobs:
 
         - template: '/miscellaneous/build_templates/appsettings.yml@templates'
           parameters:
-            secrets: 'AuthorizationCodeClientId'
+            secrets: 'AuthorizationCodeClientId, Resource'
             appsettings: oidc.config.json
             placeholder: oidc.config.placeholder.json
 
         - template: '/miscellaneous/build_templates/appsettings.yml@templates'
           parameters:
-            secrets: 'TenantId, NamespaceId, CommunityId'
+            secrets: 'TenantId, NamespaceId, CommunityId, Resource'
             appsettings: sdsconfig.json
             placeholder: sdsconfig.placeholder.json
 
