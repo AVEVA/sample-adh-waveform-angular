@@ -1,5 +1,9 @@
 # Version History
 
+## 1.3.8 / 2022-03-25
+
+- Use language specific Ids
+
 ## 1.3.7 / 2022-01-27
 
 - Updated for AVEVA Data Hub
