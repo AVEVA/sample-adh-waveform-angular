@@ -80,28 +80,3 @@ jobs:
         condition: always()
 
   - template: '/miscellaneous/build_templates/code-analysis.yml@templates'
-    parameters:
-      buildSteps:
-        - template: '/miscellaneous/build_templates/appsettings.yml@templates'
-          parameters:
-            secrets: 'AuthorizationUsername, AuthorizationPassword'
-            appsettings: cred.json
-            placeholder: cred.placeholder.json
-
-        - template: '/miscellaneous/build_templates/appsettings.yml@templates'
-          parameters:
-            secrets: 'AuthorizationCodeClientId'
-            appsettings: oidc.config.json
-            placeholder: oidc.config.placeholder.json
-
-        - template: '/miscellaneous/build_templates/appsettings.yml@templates'
-          parameters:
-            secrets: 'TenantId, NamespaceId, CommunityId'
-            appsettings: sdsconfig.json
-            placeholder: sdsconfig.placeholder.json
-
-        - script: npm ci
-          displayName: 'Install dependencies'
-
-        - script: npm run build
-          displayName: 'Build'
