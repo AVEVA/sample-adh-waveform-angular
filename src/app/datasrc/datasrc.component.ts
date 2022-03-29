@@ -18,16 +18,16 @@ import {
   SdsStreamViewMap,
 } from '../sds/sds.rest.service';
 
-const streamId = 'WaveDataStream';
-const streamIdSecondary = 'SampleStream_Secondary';
-const streamIdCompound = 'SampleStream_Compound';
+const streamId = 'WaveDataStream_Angular';
+const streamIdSecondary = 'SampleStream_Secondary_Angular';
+const streamIdCompound = 'SampleStream_Compound_Angular';
 
-const typeId = 'WaveDataType';
-const compoundTypeId = 'SampleType_Compound';
-const targetTypeId = 'WaveDataTargetType';
-const targetIntTypeId = 'WaveDataTargetIntType';
-const autoStreamViewId = 'WaveDataAutoStreamView';
-const manualStreamViewId = 'WaveDataManualStreamView';
+const typeId = 'WaveDataType_Angular';
+const compoundTypeId = 'SampleType_Compound_Angular';
+const targetTypeId = 'WaveDataTargetType_Angular';
+const targetIntTypeId = 'WaveDataTargetIntType_Angular';
+const autoStreamViewId = 'WaveDataAutoStreamView_Angular';
+const manualStreamViewId = 'WaveDataManualStreamView_Angular';
 
 class WaveDataCompound {
   Order: number;
