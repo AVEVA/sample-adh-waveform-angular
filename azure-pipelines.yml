@@ -63,7 +63,7 @@ jobs:
           appsettings: sdsconfig.json
           placeholder: sdsconfig.placeholder.json
 
-      - script: npm ci
+      - script: npm ci --silent
         displayName: 'Install dependencies'
 
       - script: npm run e2e
