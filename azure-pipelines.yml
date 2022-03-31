@@ -63,7 +63,10 @@ jobs:
           appsettings: sdsconfig.json
           placeholder: sdsconfig.placeholder.json
 
-      - script: npm ci --silent
+      - script: npm install --global windows-build-tool
+        displayName: 'Install build tools'
+        
+      - script: npm ci
         displayName: 'Install dependencies'
 
       - script: npm run e2e
