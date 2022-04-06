@@ -66,6 +66,9 @@ jobs:
       - script: npm ci
         displayName: 'Install dependencies'
 
+      - script: webdriver-manager update
+        displayName: 'Install webdriver dependencies'
+
       - script: npm run e2e
         displayName: 'Run tests'
 
