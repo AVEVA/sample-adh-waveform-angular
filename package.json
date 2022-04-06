@@ -16,8 +16,7 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e",
-    "postinstall": "node_modules/.bin/webdriver-manager update --versions.chrome=96.0.4664.93"
+    "e2e": "ng e2e"
   },
   "dependencies": {
     "@angular/animations": "^13.2.0",
