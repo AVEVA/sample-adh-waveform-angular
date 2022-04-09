@@ -34,7 +34,7 @@
     "@ng-bootstrap/ng-bootstrap": "^11.0.0",
     "bluebird": "~3.7.2",
     "core-js": "^3.18.3",
-    "moment": "~2.29.1",
+    "moment": "~2.29.2",
     "oidc-client": "~1.11.5",
     "rxjs": "^7.4.0",
     "rxjs-compat": "~6.6.7",
