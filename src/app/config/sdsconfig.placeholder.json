@@ -1,5 +1,5 @@
 {
-  "Resource": "https://uswe.datahub.connect.aveva.com",
+  "Resource": "https://dat-b.osisoft.com",
   "TenantId": "REPLACE_WITH_TENANT_ID",
   "NamespaceId": "REPLACE_WITH_NAMESPACE_ID",
   "CommunityId": "",
