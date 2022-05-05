@@ -123,6 +123,9 @@ junitresults.xml
 # Angular cache
 .angular/cache
 
+# Cypress Videos
+cypress/Videos
+
 # Credential config files
 cred.json
 oidc.config.json

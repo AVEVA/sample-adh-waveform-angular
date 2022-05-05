@@ -66,7 +66,10 @@ jobs:
       - script: npm ci
         displayName: 'Install dependencies'
 
-      - script: npm run e2e
+      - script:
+        - | 
+          npm start
+          npx cypress run
         displayName: 'Run tests'
 
       - task: PublishTestResults@2
