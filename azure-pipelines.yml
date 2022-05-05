@@ -66,8 +66,11 @@ jobs:
       - script: npm ci
         displayName: 'Install dependencies'
 
-      - script: npm start; npx cypress run
-        displayName: 'Run tests'
+      - script: npm start
+        displayName: 'Start App'
+
+      - script: npx cypress run
+        displayName: 'Run Tests'
 
       - task: PublishTestResults@2
         inputs:
