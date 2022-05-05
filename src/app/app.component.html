@@ -2,8 +2,8 @@
   <div class="navbar-nav">
     <a class="nav-item nav-link" routerLink="/">Home</a>
     <!-- Step 1 -->
-    <a *ngIf="!loggedIn" class="nav-item nav-link" (click)="login()" id="loginButton">Login</a>
-    <a *ngIf="loggedIn" class="nav-item nav-link" (click)="logout()">Logout</a>
+    <a *ngIf="!loggedIn" class="nav-item nav-link" (click)="login()" data-testid="loginButton">Login</a>
+    <a *ngIf="loggedIn" class="nav-item nav-link" (click)="logout()" data-testid="logoutButton">Logout</a>
   </div>
 </nav>
 
