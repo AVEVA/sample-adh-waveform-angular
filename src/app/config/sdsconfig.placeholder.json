@@ -1,0 +1,7 @@
+{
+    "Resource": "https://uswe.datahub.connect.aveva.com",
+    "TenantId": "REPLACE_WITH_TENANT_ID",
+    "NamespaceId": "REPLACE_WITH_NAMESPACE_ID",
+    "CommunityId": "",
+    "ApiVersion": "v1"
+}
