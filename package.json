@@ -18,7 +18,7 @@
     "lint": "ng lint",
     "e2e": "ng run angular-sds-sample:cypress-run",
     "cypress:open": "cypress open",
-    "cypress:run": "cypress run"
+    "cypress:run": "cypress run video=false"
   },
   "dependencies": {
     "@angular/animations": "^13.2.0",
