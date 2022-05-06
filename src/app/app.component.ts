@@ -22,7 +22,6 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(oidcConfigJson)
     const configFromJson = oidcConfigJson as UserManagerSettings;
     this.authConfig = {
       ...configFromJson,

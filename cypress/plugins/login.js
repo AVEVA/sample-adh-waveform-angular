@@ -84,9 +84,7 @@ const navigateToLoginPage = async (page) => {
 const selectMicrosoftPersonalAccount = async ({
   page,
 }) => {
-  let loginSelector;
-
-  loginSelector = 'a[title="Personal Account"]';
+  let loginSelector = 'a[title="Personal Account"]';
 
   try {
     await page.waitForSelector(loginSelector, { visible: true, });
@@ -98,13 +96,13 @@ const selectMicrosoftPersonalAccount = async ({
     formatAndDisplayConsoleMessages(
       'Identity Provider Selector not found on page. This is an optional page, verifying that email page is loaded instead.',
     );
+    
     // If selector is not found, check if next page is loaded. If yes, it's a conditional page.
     const isEmailSelector = await page.waitForSelector('input[type="email"]', {
       visible: true,
     });
 
     if (!isEmailSelector) {
-
       if (error instanceof puppeteer.errors.TimeoutError) {
         displayTimeoutErrors('Identity Provider Page', error);
       }
@@ -119,7 +117,7 @@ const selectMicrosoftPersonalAccount = async ({
 };
 
 /**
- * Enter and submit username/password credentials.
+ * Input and submit username/password credentials.
  */
 const submitCredentials = async ({ page, username, password }) => {
   try {
@@ -127,6 +125,7 @@ const submitCredentials = async ({ page, username, password }) => {
     await page.type('input[type="email"]', username);
     await page.waitForSelector('input[type="submit"]', { visible: true });
     await Promise.all([page.waitForNavigation(), page.click('input[type="submit"]')]);
+
     formatAndDisplayConsoleMessages(
       'Username submitted successfully, navigating to Password Page.',
     );
@@ -134,6 +133,7 @@ const submitCredentials = async ({ page, username, password }) => {
     await page.evaluate(() => {
       // Incorrect Username error
       const errorText = document.getElementById('usernameError')?.textContent;
+
       if (errorText) {
         formatAndDisplayConsoleMessages(`Incorrect Username: ${errorText}`);
       }
@@ -148,6 +148,7 @@ const submitCredentials = async ({ page, username, password }) => {
 
   try {
     formatAndDisplayConsoleMessages('Attempt to Supply Password');
+
     await page.waitForSelector('input[name="passwd"]', { visible: true });
     await page.type('input[name="passwd"]', password);
     await page.waitForSelector('input[type="submit"]', { visible: true });
@@ -162,7 +163,7 @@ const submitCredentials = async ({ page, username, password }) => {
         return document.getElementById('passwordError')?.textContent;
       });
     } catch (error) {
-
+      // Fail silently
     }
 
     if (invalidPasswordError) {
@@ -191,8 +192,18 @@ const submitCredentials = async ({ page, username, password }) => {
   }
 };
 
+/**
+ * Format and print provided message to the console.
+ */
 function formatAndDisplayConsoleMessages(message) {
   console.log(`<------ ${message} ------>`);
+}
+
+/**
+ * Format and print a timeout message to the console.
+ */
+ function displayTimeoutErrors(pageName, error) {
+  formatAndDisplayConsoleMessages(`Timeout Error on ${pageName}. ${error}`);
 }
 
 /**
@@ -210,10 +221,6 @@ async function getLocalStorageData({ page } = {}) {
 
     return localStorageData;
   });
-}
-
-function displayTimeoutErrors(pageName, error) {
-  formatAndDisplayConsoleMessages(`Timeout Error on ${pageName}. ${error}`);
 }
 
 module.exports = loginProcessHeadless;
