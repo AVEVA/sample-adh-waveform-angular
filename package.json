@@ -16,7 +16,7 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng run angular-sds-sample:cypress run --config video=false",
+    "e2e": "ng run angular-sds-sample:cypress-run --config video=false",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run"
   },
