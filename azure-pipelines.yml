@@ -38,6 +38,8 @@ variables:
     value: $(AuthorizationPassword)
   - name: client_id
     value: $(AuthorizationCodeClientId)
+  - name: authority
+    value: $(Authority)
 
 jobs:
   - job: Tests
@@ -53,7 +55,7 @@ jobs:
 
       - template: '/miscellaneous/build_templates/appsettings.yml@templates'
         parameters:
-          secrets: 'AuthorizationCodeClientId'
+          secrets: 'AuthorizationCodeClientId, Authority'
           appsettings: oidc.config.json
           placeholder: oidc.config.placeholder.json
 
