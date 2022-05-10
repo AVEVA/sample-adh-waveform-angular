@@ -14,10 +14,9 @@
     "prestart": "echo WARNING: The web server used in this sample is intended for use in testing or debugging sample applications locally. It has not been reviewed for security issues.",
     "build": "ng build",
     "lint": "ng lint",
-    "e2e": "ng serve && npx cypress run",
+    "e2e": "cypress run",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
-    "e2e:cypress": "cypress run --browser chrome --config video=false",
     "start": "ng serve",
     "cy:run": "cypress run --browser chrome --config video=false",
     "test": "start-server-and-test start http://localhost:4200 cy:run"
