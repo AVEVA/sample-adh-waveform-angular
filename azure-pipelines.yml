@@ -55,7 +55,7 @@ jobs:
 
       - template: '/miscellaneous/build_templates/appsettings.yml@templates'
         parameters:
-          secrets: 'AuthorizationCodeClientId, Authority'
+          secrets: 'AuthorizationCodeClientId, AuthorityOCS'
           appsettings: oidc.config.json
           placeholder: oidc.config.placeholder.json
 
@@ -92,7 +92,7 @@ jobs:
 
         - template: '/miscellaneous/build_templates/appsettings.yml@templates'
           parameters:
-            secrets: 'AuthorizationCodeClientId, Authority'
+            secrets: 'AuthorizationCodeClientId, AuthorityOCS'
             appsettings: oidc.config.json
             placeholder: oidc.config.placeholder.json
 
