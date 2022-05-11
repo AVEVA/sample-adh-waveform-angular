@@ -463,9 +463,40 @@ deleteValue(streamId: string, index): Observable<any>
 deleteWindowValues(streamId: string, start, end): Observable<any>
 ```
 
+## Testing the sample
+
+Tests are written using the [Cypress](https://www.cypress.io/) testing framework. To run the tests, execute
+```
+npm run test
+```
+in the console to serve the sample application and start the tests in headless mode. To run the tests in headed mode, meaning that you will see the test runner and the browser, execute
+```
+npm run test-local
+```
+in the console.
+
+#### Puppeteer Debugging
+
+The tests uses [Puppeteer](https://pptr.dev/) to handle the authentication in a separate browser. This is programmed to be executed headless, but can be configured in the [login.js](/cypress/plugins/login.js) file. In the following block
+```js
+  const browser = await puppeteer.launch({
+    headless: true,
+    /* Localhost cert is required to load https://localhost:1991 in puppeteer instance.
+    Following property removes dependency on that cert by ignoring all HTTPS errors. */
+    ignoreHTTPSErrors: true,
+    // Sends all browser console messages to machine's console
+    dumpio: false,
+  });
+```
+set 
+```js
+headless: false
+```
+and you will see the browser authenticating when running the tests.
+
 ---
 
-Tested using Node10.16.0 x64
+Tested using Node10.16.0 x64 and Cypress 9.6.1
 
 For the main ADH waveform samples page [ReadMe](https://github.com/osisoft/OSI-Samples-OCS/blob/main/docs/SDS_WAVEFORM.md)  
 For the main ADH samples page [ReadMe](https://github.com/osisoft/OSI-Samples-OCS)  
