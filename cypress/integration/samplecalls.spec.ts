@@ -8,7 +8,7 @@ describe('Tests for all home page functions', () => {
   
   it('Executes the full sample successfully', () => {
     cy.clickAndAssert('cleanup', '')
-    cy.clickAndAssert('createType', '200')
+    cy.clickAndAssert('createType', '201')
     cy.clickAndAssert('createStream', '201')
     cy.clickAndAssert('writeWaveDataEvents', '204')
     cy.clickAndAssert('retrieveWaveDataEvents', '10 events')
@@ -19,10 +19,10 @@ describe('Tests for all home page functions', () => {
     cy.clickAndAssert('retrieveFilteredValues', '200')
     cy.clickAndAssert('retrieveSampledValues', '200')
     cy.clickAndAssert('createPropertyOverrideAndUpdateStream', '204')
-    cy.clickAndAssert('createAutoStreamViewTargetType', '200')
-    cy.clickAndAssert('createAutoStreamView', '200')
+    cy.clickAndAssert('createAutoStreamViewTargetType', '201')
+    cy.clickAndAssert('createAutoStreamView', '201')
     cy.clickAndAssert('retrieveWaveDataEventsAutoStreamView', '5 events')
-    cy.clickAndAssert('createSdsStreamViewPropertiesAndManualType', '200')
+    cy.clickAndAssert('createSdsStreamViewPropertiesAndManualType', '201')
     cy.clickAndAssert('retrieveWaveDataEventsManualStreamView', '5 events')
     cy.clickAndAssert('getSdsStreamViewMap', 'SdsStreamViewMap')
     cy.clickAndAssert('updateStreamType', '204')
@@ -42,6 +42,9 @@ describe('Tests for all home page functions', () => {
     cy.clickAndAssert('secondaryDelete', '204')
     cy.clickAndAssert('createCompoundTypeandStream', '201')
     cy.clickAndAssert('createAndRetrieveCompoundData', '200')
-    cy.clickAndAssert('cleanup', '204')
+  })
+
+  it('Cleans up data', () => {
+    cy.clickAndAssert('cleanup', '')
   })
 })
