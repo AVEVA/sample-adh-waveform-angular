@@ -51,7 +51,7 @@ Cypress.Commands.add(
 
 /** @inheritdoc */
 Cypress.Commands.add(
-    'clickAndAssert',
+    'clickAndAssertResponseMessage',
     (testId: string, expectation: string) =>
         cy.getByTestId(testId).should('be.visible').click().then(() => {
             cy.getByTestId(testId + 'Message').should('contain.text', expectation)

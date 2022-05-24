@@ -15,7 +15,7 @@ declare namespace Cypress {
          * @param testId The test id of the element to click
          * @param expectation The value to assert for once element is clicked
          */
-        clickAndAssert(testId: string, expectation: string): void
+        clickAndAssertResponseMessage(testId: string, expectation: string): void
 
         /**
          * Use Puppeteer to handle the log in process, then copy the localStorageData to the Cypress browser instance.
