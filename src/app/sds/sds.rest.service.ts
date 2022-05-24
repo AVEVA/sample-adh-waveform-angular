@@ -438,7 +438,7 @@ export class SdsRestService {
   getCommunityStreams(query: string): Observable<any> {
     const url =
       this.sdsUrl +
-      `/api/${this.ApiVersion}-preview/Tenants/${this.TenantId}/Search/Communities/` +
+      `/api/${this.ApiVersion}-preview/Search/Communities/` +
       `${this.CommunityId}/Streams?query=${query}`;
     return this.authHttp.get(url, this.options);
   }
