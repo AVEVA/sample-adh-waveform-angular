@@ -1059,52 +1059,53 @@ export class DatasrcComponent {
   }
 
   cleanup() {
+    this.sdsService.deleteStream(streamId).subscribe()
+
     this.sdsService.deleteStream(streamIdSecondary).subscribe(() => {
-      this.sdsService.deleteStream(streamId).subscribe(() => {
-        // you can't delete a type if there are existing streams or streamViews
-        // that depend on it, so we must make sure the stream is deleted first.
-        this.sdsService.deleteStreamView(autoStreamViewId).subscribe(
-          (res) => {
-            this.button12Message = this.healthyResponseMessage(res);
-          },
-          (err) => {
-            this.button12Message = this.unhealthyResponseMessage(err);
-          }
-        );
-        this.sdsService.deleteStreamView(manualStreamViewId).subscribe(
-          (res) => {
-            this.button12Message = this.healthyResponseMessage(res);
-          },
-          (err) => {
-            this.button12Message = this.unhealthyResponseMessage(err);
-          }
-        );
-        this.sdsService.deleteType(typeId).subscribe(
-          (res) => {
-            this.button12Message = this.healthyResponseMessage(res);
-          },
-          (err) => {
-            this.button12Message = this.unhealthyResponseMessage(err);
-          }
-        );
-        this.sdsService.deleteType(targetTypeId).subscribe(
-          (res) => {
-            this.button12Message = this.healthyResponseMessage(res);
-          },
-          (err) => {
-            this.button12Message = this.unhealthyResponseMessage(err);
-          }
-        );
-        this.sdsService.deleteType(targetIntTypeId).subscribe(
-          (res) => {
-            this.button12Message = this.healthyResponseMessage(res);
-          },
-          (err) => {
-            this.button12Message = this.unhealthyResponseMessage(err);
-          }
-        );
-      });
+      // you can't delete a type if there are existing streams or streamViews
+      // that depend on it, so we must make sure the stream is deleted first.
+      this.sdsService.deleteStreamView(autoStreamViewId).subscribe(
+        (res) => {
+          this.button12Message = this.healthyResponseMessage(res);
+        },
+        (err) => {
+          this.button12Message = this.unhealthyResponseMessage(err);
+        }
+      );
+      this.sdsService.deleteStreamView(manualStreamViewId).subscribe(
+        (res) => {
+          this.button12Message = this.healthyResponseMessage(res);
+        },
+        (err) => {
+          this.button12Message = this.unhealthyResponseMessage(err);
+        }
+      );
+      this.sdsService.deleteType(typeId).subscribe(
+        (res) => {
+          this.button12Message = this.healthyResponseMessage(res);
+        },
+        (err) => {
+          this.button12Message = this.unhealthyResponseMessage(err);
+        }
+      );
+      this.sdsService.deleteType(targetTypeId).subscribe(
+        (res) => {
+          this.button12Message = this.healthyResponseMessage(res);
+        },
+        (err) => {
+          this.button12Message = this.unhealthyResponseMessage(err);
+        }
+      );
+      this.sdsService.deleteType(targetIntTypeId).subscribe(
+        (res) => {
+          this.button12Message = this.healthyResponseMessage(res);
+        },
+        (err) => {
+          this.button12Message = this.unhealthyResponseMessage(err);
+        }
+      );
     });
+
     this.sdsService.deleteStream(streamIdCompound).subscribe(() => {
       this.sdsService.deleteType(compoundTypeId).subscribe(
         (res) => {
@@ -1115,6 +1116,7 @@ export class DatasrcComponent {
         }
       );
     });
+    
     this.hasEvents = false;
     this.button12Message = 'All Objects Deleted';
   }

@@ -120,6 +120,9 @@ dist
 # unit tests
 junitresults.xml
 
+# Angular cache
+.angular/cache
+
 # Credential config files
 cred.json
 oidc.config.json

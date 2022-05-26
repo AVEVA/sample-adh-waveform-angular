@@ -19,11 +19,11 @@
     button below to create the WaveDatan SdsType.
   </p>
   <div>
-    <button id="createType" class="btn btn-primary" (click)="createType()">
+    <button id="createType" class="btn btn-primary" data-testid="createType" (click)="createType()">
       Create Type
     </button>
     <br />
-    <span id="createTypeMessage" *ngIf="button1Message"
+    <span id="createTypeMessage" data-testid="createTypeMessage" *ngIf="button1Message"
       >Response: {{ button1Message }}</span
     >
   </div>
@@ -34,11 +34,11 @@
     stream and associate it with a type, we can write data of that type to Sds.
     Press the button below to create a stream.
   </p>
-  <button id="createStream" class="btn btn-primary" (click)="createStream()">
+  <button id="createStream" class="btn btn-primary" data-testid="createStream" (click)="createStream()">
     Create Stream
   </button>
   <br />
-  <span id="createStreamMessage" *ngIf="button2Message"
+  <span id="createStreamMessage" *ngIf="button2Message" data-testid="createStreamMessage"
     >Response: {{ button2Message }}</span
   >
   <!-- Step 4 -->
@@ -49,13 +49,14 @@
   </p>
   <button
     id="writeWaveDataEvents"
+    data-testid="writeWaveDataEvents"
     class="btn btn-primary"
     (click)="writeWaveDataEvents()"
   >
     Insert Values
   </button>
   <br />
-  <span id="writeWaveDataEventsMessage" *ngIf="button3Message"
+  <span id="writeWaveDataEventsMessage" data-testid="writeWaveDataEventsMessage" *ngIf="button3Message"
     >Response: {{ button3Message }}</span
   >
   <!-- Step 5 -->
@@ -69,13 +70,14 @@
   </p>
   <button
     id="retrieveWaveDataEvents"
+    data-testid="retrieveWaveDataEvents"
     class="btn btn-primary"
     (click)="retrieveWaveDataEvents()"
   >
     Retrieve Events
   </button>
   <br />
-  <span id="retrieveWaveDataEventsMessage" *ngIf="button4Message"
+  <span id="retrieveWaveDataEventsMessage" data-testid="retrieveWaveDataEventsMessage" *ngIf="button4Message"
     >Response: {{ button4Message }}</span
   >
   <div id="retrieveWaveDataEventsTable" *ngIf="hasEvents">
@@ -112,6 +114,7 @@
   </p>
   <button
     id="retrieveWaveDataEventsHeaders"
+    data-testid="retrieveWaveDataEventsHeaders"
     class="btn btn-primary"
     (click)="retrieveWaveDataEventsHeaders()"
   >
@@ -120,6 +123,7 @@
   <br />
   <span
     id="retrieveWaveDataEventsHeadersMessage"
+    data-testid="retrieveWaveDataEventsHeadersMessage"
     *ngIf="getDataWithHeadersMessage"
     >Response: {{ getDataWithHeadersMessage }}</span
   >
@@ -134,13 +138,14 @@
   </p>
   <button
     id="updateWaveDataEvents"
+    data-testid="updateWaveDataEvents"
     class="btn btn-primary"
     (click)="updateWaveDataEvents()"
   >
     Update values
   </button>
   <br />
-  <span id="updateWaveDataEventsMessage" *ngIf="button14Message"
+  <span id="updateWaveDataEventsMessage" data-testid="updateWaveDataEventsMessage" *ngIf="button14Message"
     >Response: {{ button14Message }}</span
   >
 
@@ -153,13 +158,14 @@
   </p>
   <button
     id="replaceWaveDataEvents"
+    data-testid="replaceWaveDataEvents"
     class="btn btn-primary"
     (click)="replaceWaveDataEvents()"
   >
     Replace values
   </button>
   <br />
-  <span id="replaceWaveDataEventsMessage" *ngIf="button15Message"
+  <span id="replaceWaveDataEventsMessage" data-testid="replaceWaveDataEventsMessage" *ngIf="button15Message"
     >Response: {{ button15Message }}</span
   >
 
@@ -171,6 +177,7 @@
   </p>
   <button
     id="retrieveInterpolatedValues"
+    data-testid="retrieveInterpolatedValues"
     class="btn btn-primary"
     (click)="retrieveInterpolatedValues()"
   >
@@ -179,6 +186,7 @@
   <br />
   <span
     id="retrieveInterpolatedValuesMessage"
+    data-testid="retrieveInterpolatedValuesMessage"
     *ngIf="getDataInterpolatedMessage"
     >Response: {{ getDataInterpolatedMessage }}</span
   >
@@ -192,13 +200,14 @@
   </p>
   <button
     id="retrieveFilteredValues"
+    data-testid="retrieveFilteredValues"
     class="btn btn-primary"
     (click)="retrieveFilteredValues()"
   >
     Get Filtered
   </button>
   <br />
-  <span id="retrieveFilteredValuesMessage" *ngIf="getFilteredValuesMessage"
+  <span id="retrieveFilteredValuesMessage" data-testid="retrieveFilteredValuesMessage" *ngIf="getFilteredValuesMessage"
     >Response: {{ getFilteredValuesMessage }}</span
   >
 
@@ -218,13 +227,14 @@
   </p>
   <button
     id="retrieveSampledValues"
+    data-testid="retrieveSampledValues"
     class="btn btn-primary"
     (click)="retrieveSampledValues()"
   >
     Get Samples
   </button>
   <br />
-  <span id="retrieveSampledValuesMessage" *ngIf="getSampledValuesMessage"
+  <span id="retrieveSampledValuesMessage" data-testid="retrieveSampledValuesMessage" *ngIf="getSampledValuesMessage"
     >Response: {{ getSampledValuesMessage }}</span
   >
 
@@ -241,13 +251,14 @@
   </p>
   <button
     id="createPropertyOverrideAndUpdateStream"
+    data-testid="createPropertyOverrideAndUpdateStream"
     class="btn btn-primary"
     (click)="createPropertyOverrideAndUpdateStream()"
   >
     Create Property Override and Update Stream
   </button>
   <br />
-  <span id="createPropertyOverrideAndUpdateStreamMessage" *ngIf="button5Message"
+  <span id="createPropertyOverrideAndUpdateStreamMessage" data-testid="createPropertyOverrideAndUpdateStreamMessage" *ngIf="button5Message"
     >Response: {{ button5Message }}</span
   >
 
@@ -261,13 +272,14 @@
   </p>
   <button
     id="createAutoStreamViewTargetType"
+    data-testid="createAutoStreamViewTargetType"
     class="btn btn-primary"
     (click)="createAutoStreamViewTargetType()"
   >
     Create a target SdsType
   </button>
   <br />
-  <span id="createAutoStreamViewTargetTypeMessage" *ngIf="button6Message"
+  <span id="createAutoStreamViewTargetTypeMessage" data-testid="createAutoStreamViewTargetTypeMessage" *ngIf="button6Message"
     >Response: {{ button6Message }}</span
   >
   <p>
@@ -276,13 +288,14 @@
   </p>
   <button
     id="createAutoStreamView"
+    data-testid="createAutoStreamView"
     class="btn btn-primary"
     (click)="createAutoStreamView()"
   >
     Create an SdsStreamView
   </button>
   <br />
-  <span id="createAutoStreamViewMessage" *ngIf="button7Message"
+  <span id="createAutoStreamViewMessage" data-testid="createAutoStreamViewMessage" *ngIf="button7Message"
     >Response: {{ button7Message }}</span
   >
   <p>
@@ -291,13 +304,14 @@
   </p>
   <button
     id="retrieveWaveDataEventsAutoStreamView"
+    data-testid="retrieveWaveDataEventsAutoStreamView"
     class="btn btn-primary"
     (click)="retrieveWaveDataEventsAutoStreamView()"
   >
     Retrieve Events
   </button>
   <br />
-  <span id="retrieveWaveDataEventsAutoStreamViewMessage" *ngIf="button8Message"
+  <span id="retrieveWaveDataEventsAutoStreamViewMessage" data-testid="retrieveWaveDataEventsAutoStreamViewMessage" *ngIf="button8Message"
     >Response: {{ button8Message }}</span
   >
   <div
@@ -340,6 +354,7 @@
   </p>
   <button
     id="createSdsStreamViewPropertiesAndManualType"
+    data-testid="createSdsStreamViewPropertiesAndManualType"
     class="btn btn-primary"
     (click)="createSdsStreamViewPropertiesAndManualType()"
   >
@@ -348,6 +363,7 @@
   <br />
   <span
     id="createSdsStreamViewPropertiesAndManualTypeMessage"
+    data-testid="createSdsStreamViewPropertiesAndManualTypeMessage"
     *ngIf="button9Message"
     >Response: {{ button9Message }}</span
   >
@@ -357,6 +373,7 @@
   </p>
   <button
     id="retrieveWaveDataEventsManualStreamView"
+    data-testid="retrieveWaveDataEventsManualStreamView"
     class="btn btn-primary"
     (click)="retrieveWaveDataEventsManualStreamView()"
   >
@@ -365,11 +382,13 @@
   <br />
   <span
     id="retrieveWaveDataEventsManualStreamViewMessage"
+    data-testid="retrieveWaveDataEventsManualStreamViewMessage"
     *ngIf="button10Message"
     >Response: {{ button10Message }}</span
   >
   <div
     id="retrieveWaveDataEventsManualStreamViewTable"
+    data-testid="retrieveWaveDataEventsManualStreamViewTable"
     *ngIf="hasStreamView2Events"
   >
     <table class="table table-striped table-condensed">
@@ -394,13 +413,14 @@
   </p>
   <button
     id="getSdsStreamViewMap"
+    data-testid="getSdsStreamViewMap"
     class="btn btn-primary"
     (click)="getSdsStreamViewMap()"
   >
     Request SdsStreamViewMap
   </button>
   <br />
-  <span id="getSdsStreamViewMapMessage" *ngIf="button11Message"
+  <span id="getSdsStreamViewMapMessage" data-testid="getSdsStreamViewMapMessage" *ngIf="button11Message"
     >Response: {{ button11Message }}</span
   >
   <div id="getSdsStreamViewMapTable" *ngIf="hasMapProperties">
@@ -435,13 +455,14 @@
   <p>We can change the streams type using the streamview</p>
   <button
     id="updateStreamType"
+    data-testid="updateStreamType"
     class="btn btn-primary"
     (click)="updateStreamType()"
   >
     Update StreamType
   </button>
   <br />
-  <span id="updateStreamTypeMessage" *ngIf="updateStreamTypeMessage"
+  <span id="updateStreamTypeMessage" data-testid="updateStreamTypeMessage" *ngIf="updateStreamTypeMessage"
     >Response: {{ updateStreamTypeMessage }}</span
   >
 
@@ -451,11 +472,11 @@
     We can query the types we return based upon many things, including in this
     example whether their Id contains: Target.
   </p>
-  <button id="queryTypes" class="btn btn-primary" (click)="queryTypes()">
+  <button id="queryTypes" data-testid="queryTypes" class="btn btn-primary" (click)="queryTypes()">
     Get type query
   </button>
   <br />
-  <span id="queryTypesMessage" *ngIf="queryTypesMessage"
+  <span id="queryTypesMessage" data-testid="queryTypesMessage" *ngIf="queryTypesMessage"
     >Response: {{ queryTypesMessage }}</span
   >
 
@@ -464,42 +485,45 @@
   <p>Let's add some tags and metadata to our stream</p>
   <button
     id="createTagsAndMetadata"
+    data-testid="createTagsAndMetadata"
     class="btn btn-primary"
     (click)="createTagsAndMetadata()"
   >
     Create Tags and Metadata
   </button>
   <br />
-  <span id="createTagsAndMetadataMessage" *ngIf="button16Message"
+  <span id="createTagsAndMetadataMessage" data-testid="createTagsAndMetadataMessage" *ngIf="button16Message"
     >Response: {{ button16Message }}</span
   >
 
   <p></p>
   <button
     id="getAndPrintTags"
+    data-testid="getAndPrintTags"
     class="btn btn-primary"
     (click)="getAndPrintTags()"
   >
     Get Tags
   </button>
   <br />
-  <span id="getAndPrintTagsMessage" *ngIf="button17Message">{{
+  <span id="getAndPrintTagsMessage" data-testid="getAndPrintTagsMessage" *ngIf="button17Message">{{
     button17Message
   }}</span>
 
   <p></p>
   <button
     id="getAndPrintMetadata"
+    data-testid="getAndPrintMetadata"
     class="btn btn-primary"
     (click)="getAndPrintMetadata()"
   >
     Get Metadata
   </button>
   <br />
-  <span id="getAndPrintMetadataMessage" *ngIf="button18Message"
+  <span id="getAndPrintMetadataMessage" data-testid="getAndPrintMetadataMessage" *ngIf="button18Message"
     >Response: {{ button18Message }}</span
   >
-  <div id="getAndPrintMetadataMessage" *ngIf="hasMetadata">
+  <div id="getAndPrintMetadataMessage" data-testid="getAndPrintMetadataMessage" *ngIf="hasMetadata">
     <table class="table table-striped table-bordered">
       <tr>
         <th>Key</th>
@@ -523,27 +547,28 @@
 
   <!-- Step 17 -->
   <p>Let's make some changes to the metadata on our stream</p>
-  <button id="patchMetadata" class="btn btn-primary" (click)="patchMetadata()">
+  <button id="patchMetadata" data-testid="patchMetadata" class="btn btn-primary" (click)="patchMetadata()">
     Patch Metadata
   </button>
   <br />
-  <span id="patchMetadataMessage" *ngIf="button19Message"
+  <span id="patchMetadataMessage" data-testid="patchMetadataMessage" *ngIf="button19Message"
     >Response: {{ button19Message }}</span
   >
 
   <p></p>
   <button
     id="getAndPrintMetadata2"
+    data-testid="getAndPrintMetadata2"
     class="btn btn-primary"
     (click)="getAndPrintMetadata2()"
   >
     Get Updated Metadata
   </button>
   <br />
-  <span id="getAndPrintMetadata2Message" *ngIf="button20Message"
+  <span id="getAndPrintMetadata2Message" data-testid="getAndPrintMetadata2Message" *ngIf="button20Message"
     >Response: {{ button20Message }}</span
   >
-  <div id="getAndPrintMetadata2Message" *ngIf="hasMetadata2">
+  <div id="getAndPrintMetadata2Message" data-testid="getAndPrintMetadata2Message" *ngIf="hasMetadata2">
     <table class="table table-striped table-bordered">
       <tr>
         <th>Key</th>
@@ -572,16 +597,17 @@
     <p>First, get the tenant roles and find the community member role</p>
     <button
       id="getTenantRoles"
+      data-testid="getTenantRoles"
       class="btn btn-primary"
       (click)="getCommunityRole()"
     >
       Get Community Member Role
     </button>
     <br />
-    <div id="getTenantRolesMessage" *ngIf="getTenantRolesResponse">
+    <div id="getTenantRolesMessage" data-testid="getTenantRolesMessage" *ngIf="getTenantRolesResponse">
       Response: {{ getTenantRolesResponse }}
     </div>
-    <div id="communityRoleMessage" *ngIf="communityRoleId">
+    <div id="communityRoleMessage" data-testid="communityRoleMessage" *ngIf="communityRoleId">
       Role Id: {{ communityRoleId }}
     </div>
     <br />
@@ -591,13 +617,14 @@
     </p>
     <button
       id="shareCommunityStream"
+      data-testid="shareCommunityStream"
       class="btn btn-primary"
       (click)="shareCommunityStream()"
     >
       Share Stream to Community
     </button>
     <br />
-    <div id="shareCommunityStreamMessage" *ngIf="shareCommunityStreamResponse">
+    <div id="shareCommunityStreamMessage" data-testid="shareCommunityStreamMessage" *ngIf="shareCommunityStreamResponse">
       Response: {{ shareCommunityStreamResponse }}
     </div>
     <br />
@@ -605,13 +632,14 @@
     <p>Search the community for the shared stream</p>
     <button
       id="searchCommunity"
+      data-testid="searchCommunity"
       class="btn btn-primary"
       (click)="searchCommunity()"
     >
       Search the Community Streams
     </button>
     <br />
-    <div id="searchCommunityMessage" *ngIf="searchCommunityResponse">
+    <div id="searchCommunityMessage" data-testid="searchCommunityMessage" *ngIf="searchCommunityResponse">
       Response: {{ searchCommunityResponse }}
     </div>
     <div *ngIf="communityStreams.length">Found community streams:</div>
@@ -623,16 +651,17 @@
     <p>Get the last event from the community stream</p>
     <button
       id="getCommunityLast"
+      data-testid="getCommunityLast"
       class="btn btn-primary"
       (click)="getCommunityLast()"
     >
       Get Community Stream Last Event
     </button>
     <br />
-    <div id="getCommunityLastMessage" *ngIf="getCommunityLastResponse">
+    <div id="getCommunityLastMessage" data-testid="getCommunityLastMessage" *ngIf="getCommunityLastResponse">
       Response: {{ getCommunityLastResponse }}
     </div>
-    <div id="communityLastMessage" *ngIf="communityLast">
+    <div id="communityLastMessage" data-testid="communityLastMessage" *ngIf="communityLast">
       {{ communityLast }}
     </div>
   </ng-container>
@@ -645,13 +674,14 @@
   </p>
   <button
     id="deleteAllValues"
+    data-testid="deleteAllValues"
     class="btn btn-primary"
     (click)="deleteAllValues()"
   >
     Delete Values
   </button>
   <br />
-  <span id="deleteAllValuesMessage" *ngIf="button13Message"
+  <span id="deleteAllValuesMessage" data-testid="deleteAllValuesMessage" *ngIf="button13Message"
     >Response: {{ button13Message }}</span
   >
 
@@ -659,18 +689,19 @@
   <h3>Create Stream with Secondary Index Values</h3>
   <p>
     Streams can have a secondary index that is different than its type primary
-    index. In this case we create a new stream to show this, with a seconadry
+    index. In this case we create a new stream to show this, with a secondary
     index on radians.
   </p>
   <button
     id="secondaryCreate"
+    data-testid="secondaryCreate"
     class="btn btn-primary"
     (click)="createStreamSecondaryIndex()"
   >
     Create Secondary indexed stream
   </button>
   <br />
-  <span id="secondaryCreateMessage" *ngIf="secondaryCreateMessage"
+  <span id="secondaryCreateMessage" data-testid="secondaryCreateMessage" *ngIf="secondaryCreateMessage"
     >Response: {{ secondaryCreateMessage }}</span
   >
 
@@ -682,13 +713,14 @@
   </p>
   <button
     id="secondaryUpdate"
+    data-testid="secondaryUpdate"
     class="btn btn-primary"
     (click)="updateStreamSecondaryIndex()"
   >
     Update stream to have a secondary index
   </button>
   <br />
-  <span id="secondaryUpdateMessage" *ngIf="secondaryUpdateMessage"
+  <span id="secondaryUpdateMessage" data-testid="secondaryUpdateMessage" *ngIf="secondaryUpdateMessage"
     >Response: {{ secondaryUpdateMessage }}</span
   >
 
@@ -696,13 +728,14 @@
   <p></p>
   <button
     id="secondaryDelete"
+    data-testid="secondaryDelete"
     class="btn btn-primary"
     (click)="secondaryDeleteIndex()"
   >
     Update stream to not have a secondary index
   </button>
   <br />
-  <span id="secondaryDeleteMessage" *ngIf="secondaryDeleteMessage"
+  <span id="secondaryDeleteMessage" data-testid="secondaryDeleteMessage" *ngIf="secondaryDeleteMessage"
     >Response: {{ secondaryDeleteMessage }}</span
   >
 
@@ -711,6 +744,7 @@
   <p>Types can have a compound index.</p>
   <button
     id="createCompoundTypeandStream"
+    data-testid="createCompoundTypeandStream"
     class="btn btn-primary"
     (click)="createCompoundTypeandStream()"
   >
@@ -719,6 +753,7 @@
   <br />
   <span
     id="createCompoundTypeandStreamMessage"
+    data-testid="createCompoundTypeandStreamMessage"
     *ngIf="createCompoundTypeandStreamMessage"
     >Response: {{ createCompoundTypeandStreamMessage }}</span
   >
@@ -731,6 +766,7 @@
   </p>
   <button
     id="createAndRetrieveCompoundData"
+    data-testid="createAndRetrieveCompoundData"
     class="btn btn-primary"
     (click)="createAndRetrieveCompoundData()"
   >
@@ -739,11 +775,13 @@
   <br />
   <span
     id="createAndRetrieveCompoundDataMessage"
+    data-testid="createAndRetrieveCompoundDataMessage"
     *ngIf="createAndRetrieveCompoundDataMessage"
     >Response: {{ createAndRetrieveCompoundDataMessage }}</span
   >
   <span
     id="createAndRetrieveCompoundDataMessageData"
+    data-testid="createAndRetrieveCompoundDataMessageData"
     *ngIf="createAndRetrieveCompoundDataMessageData"
     >Response: {{ createAndRetrieveCompoundDataMessageData }}</span
   >
@@ -756,11 +794,11 @@
     sample runs again. Please note that deleting a stream deletes all of the
     data written to that stream.
   </p>
-  <button id="cleanup" class="btn btn-primary" (click)="cleanup()">
+  <button id="cleanup" data-testid="cleanup" class="btn btn-primary" (click)="cleanup()">
     Clean up
   </button>
   <br />
-  <span id="cleanupMessage" *ngIf="button12Message"
+  <span id="cleanupMessage" data-testid="cleanupMessage" *ngIf="button12Message"
     >Response: {{ button12Message }}</span
   >
 </div>
