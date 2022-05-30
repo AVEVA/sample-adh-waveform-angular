@@ -8,7 +8,7 @@ describe('Tests for all home page functions', () => {
   
   it('Executes the full sample successfully', () => {
     cy.clickAndAssertResponseMessage('cleanup', '')
-    cy.clickAndAssertResponseMessage('createType', '201')
+    cy.clickAndAssertResponseMessage('createType', '200')
     cy.clickAndAssertResponseMessage('createStream', '201')
     cy.clickAndAssertResponseMessage('writeWaveDataEvents', '204')
     cy.clickAndAssertResponseMessage('retrieveWaveDataEvents', '10 events')
@@ -19,8 +19,8 @@ describe('Tests for all home page functions', () => {
     cy.clickAndAssertResponseMessage('retrieveFilteredValues', '200')
     cy.clickAndAssertResponseMessage('retrieveSampledValues', '200')
     cy.clickAndAssertResponseMessage('createPropertyOverrideAndUpdateStream', '204')
-    cy.clickAndAssertResponseMessage('createAutoStreamViewTargetType', '201')
-    cy.clickAndAssertResponseMessage('createAutoStreamView', '201')
+    cy.clickAndAssertResponseMessage('createAutoStreamViewTargetType', '200')
+    cy.clickAndAssertResponseMessage('createAutoStreamView', '200')
     cy.clickAndAssertResponseMessage('retrieveWaveDataEventsAutoStreamView', '5 events')
     cy.clickAndAssertResponseMessage('createSdsStreamViewPropertiesAndManualType', '201')
     cy.clickAndAssertResponseMessage('retrieveWaveDataEventsManualStreamView', '5 events')
