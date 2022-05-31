@@ -1,8 +1,12 @@
 # Version History
 
-## 1.3.9 / 2022-05-24
+## 1.4.1 / 2022-05-24
 
 - Update communities queries to be compliant with changes made to the API
+
+## 1.4.0 / 2022-05-10
+
+- Remove Protractor in favor of Cypress for testing
 
 ## 1.3.8 / 2022-03-25
 

@@ -38,6 +38,8 @@ variables:
     value: $(AuthorizationPassword)
   - name: client_id
     value: $(AuthorizationCodeClientId)
+  - name: authority
+    value: $(AuthorityOCS)
 
 jobs:
   - job: Tests
@@ -53,7 +55,7 @@ jobs:
 
       - template: '/miscellaneous/build_templates/appsettings.yml@templates'
         parameters:
-          secrets: 'AuthorizationCodeClientId'
+          secrets: 'AuthorizationCodeClientId, AuthorityOCS'
           appsettings: oidc.config.json
           placeholder: oidc.config.placeholder.json
 
@@ -66,8 +68,8 @@ jobs:
       - script: npm ci
         displayName: 'Install dependencies'
 
-      - script: npm run e2e
-        displayName: 'Run tests'
+      - script: npm run test
+        displayName: 'Run Tests'
 
       - task: PublishTestResults@2
         inputs:
@@ -90,13 +92,13 @@ jobs:
 
         - template: '/miscellaneous/build_templates/appsettings.yml@templates'
           parameters:
-            secrets: 'AuthorizationCodeClientId'
+            secrets: 'AuthorizationCodeClientId, AuthorityOCS'
             appsettings: oidc.config.json
             placeholder: oidc.config.placeholder.json
 
         - template: '/miscellaneous/build_templates/appsettings.yml@templates'
           parameters:
-            secrets: 'TenantId, NamespaceId, CommunityId'
+            secrets: 'TenantId, NamespaceId, CommunityId, Resource'
             appsettings: sdsconfig.json
             placeholder: sdsconfig.placeholder.json
 
