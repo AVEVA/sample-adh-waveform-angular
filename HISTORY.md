@@ -1,8 +1,12 @@
 # Version History
 
-## 1.4.1 / 2022-05-24
+## 1.4.2 / 2022-05-24
 
 - Update communities queries to be compliant with changes made to the API
+
+## 1.4.1 / 2022-05-31
+
+- Update clean up logic used in UI tests
 
 ## 1.4.0 / 2022-05-10
 
