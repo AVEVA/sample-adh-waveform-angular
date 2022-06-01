@@ -1,5 +1,9 @@
 # Version History
 
+## 1.4.1 / 2022-05-31
+
+- Update clean up logic used in UI tests
+
 ## 1.4.0 / 2022-05-10
 
 - Remove Protractor in favor of Cypress for testing

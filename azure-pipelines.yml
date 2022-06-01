@@ -40,6 +40,8 @@ variables:
     value: $(AuthorizationCodeClientId)
   - name: authority
     value: $(AuthorityOCS)
+  - name: CYPRESS_VERIFY_TIMEOUT
+    value: 10000
 
 jobs:
   - job: Tests
