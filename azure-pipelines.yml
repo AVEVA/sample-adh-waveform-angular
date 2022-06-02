@@ -41,7 +41,7 @@ variables:
   - name: authority
     value: $(AuthorityOCS)
   - name: CYPRESS_VERIFY_TIMEOUT
-    value: 10000
+    value: 100000
 
 jobs:
   - job: Tests
