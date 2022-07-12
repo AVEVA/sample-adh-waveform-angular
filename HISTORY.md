@@ -1,5 +1,9 @@
 # Version History
 
+## 1.4.2 / 2022-06-20
+
+- Updated dependencies
+
 ## 1.4.1 / 2022-05-31
 
 - Update clean up logic used in UI tests
