@@ -52,7 +52,7 @@
     "@angular/language-service": "^13.2.0",
     "@cypress/schematic": "^2.0.0",
     "@types/jasmine": "^4.0.3",
-    "@types/node": "^18.0.0",
+    "@types/node": "^18.7.1",
     "cypress": "^9.6.0",
     "jasmine-core": "^4.2.0",
     "jasmine-reporters": "^2.5.0",
