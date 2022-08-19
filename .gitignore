@@ -66,6 +66,9 @@ web_modules/
 # Output of 'npm pack'
 *.tgz
 
+# Ignore images
+*.png
+
 # Yarn Integrity file
 .yarn-integrity
 
