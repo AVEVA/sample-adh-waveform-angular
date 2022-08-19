@@ -91,6 +91,7 @@ const selectMicrosoftPersonalAccount = async ({
     formatAndDisplayConsoleMessages('Identity Provider Selector found.');
 
     await Promise.all([page.waitForNavigation(), page.click(loginSelector)]);
+    await Promise.all([page.click(loginSelector)]);
     formatAndDisplayConsoleMessages('Identity Provider successfully selected, navigating to Username Page.',);
   } catch (error) {
     formatAndDisplayConsoleMessages(

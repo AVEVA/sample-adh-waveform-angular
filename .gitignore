@@ -69,6 +69,9 @@ web_modules/
 # Ignore images
 *.png
 
+# Ignore videos
+*.mp4
+
 # Yarn Integrity file
 .yarn-integrity
 
