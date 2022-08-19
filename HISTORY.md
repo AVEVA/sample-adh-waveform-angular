@@ -1,5 +1,9 @@
 # Version History
 
+## 1.4.5 / 2022-08-19
+
+- Upgrade to cypress 10
+
 ## 1.4.4 / 2022-08-17
 
 - Automate dependabot approval and automerge
