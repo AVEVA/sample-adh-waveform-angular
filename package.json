@@ -39,7 +39,7 @@
     "core-js": "^3.24.1",
     "moment": "~2.29.3",
     "oidc-client": "~1.11.5",
-    "puppeteer": "^16.1.1",
+    "puppeteer": "^16.2.0",
     "rxjs": "^7.5.5",
     "rxjs-compat": "~6.6.7",
     "tslib": "^2.4.0",
