@@ -1,8 +1,38 @@
 describe('Tests for all home page functions', () => {
   before(() => {
     cy.fixture('cred').then((cred) => {
-      cy.loginProcessHeadless(cred.login, cred.pass)
-      cy.visit('/');
+      
+      cy.visit('/')
+      cy.contains('Login').click()
+      
+      cy.origin(
+        cred.resource, () => {
+          cy.contains('Personal Account').click()
+        }
+      )
+
+      const credentials = {username: cred.login, password: cred.pass }
+
+      cy.origin(
+        'https://login.microsoftonline.com', { args: credentials }, ({ username }) => {
+          cy.get('input[type="email"]')
+            .invoke('attr', 'type', 'password')
+            .type(username)
+          cy.get('input[type="submit"]').click()
+        }
+      )
+
+      cy.origin(
+        'https://login.live.com', { args: credentials }, ({ password }) => {
+          cy.get('input[name="passwd"]')
+            .invoke('attr', 'type', 'password')
+            .type(password)
+          cy.get('input[type="submit"]').click()
+          cy.get('input[value="No"]').click()         
+        }
+      )
+
+      cy.contains('Login').click()
       cy.clickAndAssertResponseMessage('cleanup', '')
     })
   })
