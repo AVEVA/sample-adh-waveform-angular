@@ -475,28 +475,9 @@ npm run test-local
 ```
 in the console.
 
-#### Puppeteer Debugging
-
-The tests uses [Puppeteer](https://pptr.dev/) to handle the authentication in a separate browser. This is programmed to be executed headless, but can be configured in the [login.js](/cypress/plugins/login.js) file. In the following block
-```js
-  const browser = await puppeteer.launch({
-    headless: true,
-    /* Localhost cert is required to load https://localhost:1991 in puppeteer instance.
-    Following property removes dependency on that cert by ignoring all HTTPS errors. */
-    ignoreHTTPSErrors: true,
-    // Sends all browser console messages to machine's console
-    dumpio: false,
-  });
-```
-set 
-```js
-headless: false
-```
-and you will see the browser authenticating when running the tests.
-
 ---
 
-Tested using Node10.16.0 x64 and Cypress 9.6.1
+Tested using Node 10.16.0 x64 and Cypress 10.6.0
 
 For the main ADH waveform samples page [ReadMe](https://github.com/osisoft/OSI-Samples-OCS/blob/main/docs/SDS_WAVEFORM.md)  
 For the main ADH samples page [ReadMe](https://github.com/osisoft/OSI-Samples-OCS)  

@@ -3,6 +3,7 @@
 ## 1.4.5 / 2022-08-19
 
 - Upgrade to cypress 10
+- Replace puppeteer with cypress origin functionality
 
 ## 1.4.4 / 2022-08-17
 
