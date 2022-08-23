@@ -6,7 +6,7 @@ describe('Tests for all home page functions', () => {
       cy.contains('Login').click()
       
       cy.origin(
-        cred.resource, () => {
+        cred.auth_origin, () => {
           cy.contains('Personal Account').click()
         }
       )

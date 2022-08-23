@@ -36,7 +36,7 @@ variables:
     value: $(AuthorizationUsername)
   - name: pass
     value: $(AuthorizationPassword)
-  - name: resource
+  - name: auth_origin
     value: $(Resource)
   - name: client_id
     value: $(AuthorizationCodeClientId)
