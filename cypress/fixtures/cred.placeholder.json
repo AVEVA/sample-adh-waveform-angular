@@ -1,4 +1,5 @@
 {
     "login": "Login_Email",
-    "pass": "Login_Pass"
+    "pass": "Login_Pass",
+    "auth_origin": "Login_Resource"
 }

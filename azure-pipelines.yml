@@ -36,6 +36,8 @@ variables:
     value: $(AuthorizationUsername)
   - name: pass
     value: $(AuthorizationPassword)
+  - name: auth_origin
+    value: $(Resource)
   - name: client_id
     value: $(AuthorizationCodeClientId)
   - name: authority
@@ -59,7 +61,7 @@ jobs:
     steps:
       - template: '/miscellaneous/build_templates/appsettings.yml@templates'
         parameters:
-          secrets: 'AuthorizationUsername, AuthorizationPassword'
+          secrets: 'AuthorizationUsername, AuthorizationPassword, Resource'
           appsettings: cred.json
           placeholder: cred.placeholder.json
 

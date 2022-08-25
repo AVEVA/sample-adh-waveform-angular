@@ -3,7 +3,7 @@
 | :loudspeaker: **Notice**: Samples have been updated to reflect that they work on AVEVA Data Hub. The samples also work on OSIsoft Cloud Services unless otherwise noted. |
 | -----------------------------------------------------------------------------------------------|  
 
-**Version:** 1.4.4
+**Version:** 1.4.5
 
 [![Build Status](https://dev.azure.com/osieng/engineering/_apis/build/status/product-readiness/ADH/aveva.sample-adh-waveform-angular?branchName=main)](https://dev.azure.com/osieng/engineering/_build/latest?definitionId=2626&branchName=main)
 
@@ -475,28 +475,9 @@ npm run test-local
 ```
 in the console.
 
-#### Puppeteer Debugging
-
-The tests uses [Puppeteer](https://pptr.dev/) to handle the authentication in a separate browser. This is programmed to be executed headless, but can be configured in the [login.js](/cypress/plugins/login.js) file. In the following block
-```js
-  const browser = await puppeteer.launch({
-    headless: true,
-    /* Localhost cert is required to load https://localhost:1991 in puppeteer instance.
-    Following property removes dependency on that cert by ignoring all HTTPS errors. */
-    ignoreHTTPSErrors: true,
-    // Sends all browser console messages to machine's console
-    dumpio: false,
-  });
-```
-set 
-```js
-headless: false
-```
-and you will see the browser authenticating when running the tests.
-
 ---
 
-Tested using Node10.16.0 x64 and Cypress 9.6.1
+Tested using Node 10.16.0 x64 and Cypress 10.6.0
 
 For the main ADH waveform samples page [ReadMe](https://github.com/osisoft/OSI-Samples-OCS/blob/main/docs/SDS_WAVEFORM.md)  
 For the main ADH samples page [ReadMe](https://github.com/osisoft/OSI-Samples-OCS)  

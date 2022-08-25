@@ -16,13 +16,5 @@ declare namespace Cypress {
          * @param expectation The value to assert for once element is clicked
          */
         clickAndAssertResponseMessage(testId: string, expectation: string): void
-
-        /**
-         * Use Puppeteer to handle the log in process, then copy the localStorageData to the Cypress browser instance.
-         *  
-         * @param username Username to use for log in
-         * @param password Password to use for log in
-         */
-         loginProcessHeadless(username: string, password: string): void
     }
 }
