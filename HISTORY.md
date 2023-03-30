@@ -1,5 +1,10 @@
 # Version History
 
+## 1.4.6 / 2023-03-30
+
+- Fix E2E test
+- Update dependencies
+
 ## 1.4.5 / 2022-08-19
 
 - Upgrade to cypress 10

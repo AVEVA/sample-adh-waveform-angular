@@ -15,7 +15,7 @@ describe('Tests for all home page functions', () => {
 
       cy.origin(
         'https://login.microsoftonline.com', { args: credentials }, ({ username }) => {
-          cy.get('input[type="email"]')
+          cy.get('input[name="loginfmt"]')
             .invoke('attr', 'type', 'password')
             .type(username)
           cy.get('input[type="submit"]').click()
