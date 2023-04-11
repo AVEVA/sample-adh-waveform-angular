@@ -1,5 +1,9 @@
 # Version History
 
+## 1.4.89 / 2023-04-11
+
+- Update login flow
+
 ## 1.4.6 / 2023-03-30
 
 - Fix E2E test
