@@ -1,6 +1,6 @@
 # Version History
 
-## 1.4.89 / 2023-04-11
+## 1.4.7 / 2023-04-11
 
 - Update login flow
 
