@@ -26,7 +26,7 @@ describe('Tests for all home page functions', () => {
 
   it('Executes the full sample successfully', () => {
     cy.clickAndAssertResponseMessage('createType', '201')
-    cy.clickAndAssertResponseMessage('createStream', '201')
+    cy.wait(1000).clickAndAssertResponseMessage('createStream', '201')
     cy.clickAndAssertResponseMessage('writeWaveDataEvents', '204')
     cy.clickAndAssertResponseMessage('retrieveWaveDataEvents', '10 events')
     cy.clickAndAssertResponseMessage('retrieveWaveDataEventsHeaders', '200')
