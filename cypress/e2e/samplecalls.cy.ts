@@ -1,45 +1,32 @@
 describe('Tests for all home page functions', () => {
   before(() => {
     cy.fixture('cred').then((cred) => {
-      
+
       cy.visit('/')
       cy.contains('Login').click()
-      
-      cy.origin(
-        cred.auth_origin, () => {
-          cy.contains('Personal Account').click()
-        }
-      )
 
-      const credentials = {username: cred.login, password: cred.pass }
+      const credentials = { username: cred.login, password: cred.pass }
 
       cy.origin(
-        'https://login.microsoftonline.com', { args: credentials }, ({ username }) => {
-          cy.get('input[name="loginfmt"]')
+        'https://signin.connect.aveva.com/', { args: credentials }, ({ username, password }) => {
+          cy.get('input[id="email"]')
             .invoke('attr', 'type', 'password')
             .type(username)
-          cy.get('input[type="submit"]').click()
-        }
-      )
-
-      cy.origin(
-        'https://login.live.com', { args: credentials }, ({ password }) => {
-          cy.get('input[name="passwd"]')
+          cy.get('input[id="password"]')
             .invoke('attr', 'type', 'password')
             .type(password)
-          cy.get('input[type="submit"]').click()
-          cy.get('input[value="No"]').click()         
+          cy.get('[id="submit"]').click()
         }
       )
 
-      cy.contains('Login').click()
+      cy.wait(10000).contains('Login').click()
       cy.clickAndAssertResponseMessage('cleanup', '')
     })
   })
-  
+
   it('Executes the full sample successfully', () => {
     cy.clickAndAssertResponseMessage('createType', '201')
-    cy.clickAndAssertResponseMessage('createStream', '201')
+    cy.wait(1000).clickAndAssertResponseMessage('createStream', '201')
     cy.clickAndAssertResponseMessage('writeWaveDataEvents', '204')
     cy.clickAndAssertResponseMessage('retrieveWaveDataEvents', '10 events')
     cy.clickAndAssertResponseMessage('retrieveWaveDataEventsHeaders', '200')
