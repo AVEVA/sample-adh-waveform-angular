@@ -1,7 +1,4 @@
-﻿# Sequential Data Store Angular Sample
-
-| :loudspeaker: **Notice**: Samples have been updated to reflect that they work on AVEVA Data Hub. The samples also work on OSIsoft Cloud Services unless otherwise noted. |
-| -----------------------------------------------------------------------------------------------|  
+# Sequential Data Store Angular Sample
 
 **Version:** 1.4.7
 
@@ -125,7 +122,7 @@ buildWaveDataType() {
     intType.SdsTypeCode = SdsTypeCode.Int32;
 ```
 
-Next, the WaveData properties are each represented by an SdsTypeProperty. Each SdsType field in SdsTypeProperty is assigned an integer or double SdsType. The WaveData Order property represents the type’s key, and its IsKey property is set to true.
+Next, the WaveData properties are each represented by an SdsTypeProperty. Each SdsType field in SdsTypeProperty is assigned an integer or double SdsType. The WaveData Order property represents the type's key, and its IsKey property is set to true.
 
 ```js
     const orderProperty = new SdsTypeProperty();
@@ -410,7 +407,7 @@ this.sdsService.getRangeValues(
 ```
 
 To map a property that is beyond the ability of SDS to map on its own,
-you should define an SdsStreamViewProperty and add it to the SdsStreamView’s Properties collection.
+you should define an SdsStreamViewProperty and add it to the SdsStreamView's Properties collection.
 
 ```js
 const manualStreamView = new SdsStreamView();
