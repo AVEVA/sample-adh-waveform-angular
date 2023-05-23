@@ -36,7 +36,7 @@
     "@ng-bootstrap/ng-bootstrap": "^14.0.1",
     "@popperjs/core": "^2.11.7",
     "bluebird": "~3.7.2",
-    "core-js": "^3.29.1",
+    "core-js": "^3.30.2",
     "moment": "~2.29.3",
     "oidc-client": "~1.11.5",
     "puppeteer": "^19.8.2",
