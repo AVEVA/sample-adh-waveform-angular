@@ -42,7 +42,7 @@
     "puppeteer": "^20.3.0",
     "rxjs": "^7.8.0",
     "rxjs-compat": "~6.6.7",
-    "tslib": "^2.5.0",
+    "tslib": "^2.5.3",
     "zone.js": "~0.13.0"
   },
   "devDependencies": {
