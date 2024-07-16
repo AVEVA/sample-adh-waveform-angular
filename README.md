@@ -2,7 +2,7 @@
 
 **Version:** 1.4.8
 
-[![Build Status](https://dev.azure.com/osieng/engineering/_apis/build/status/product-readiness/ADH/aveva.sample-adh-waveform-angular?branchName=main)](https://dev.azure.com/osieng/engineering/_build/latest?definitionId=2626&branchName=main)
+[![Build Status](https://dev.azure.com/AVEVA-VSTS/Cloud%20Platform/_apis/build/status%2Fproduct-readiness%2FADH%2FAVEVA.sample-adh-waveform-angular?repoName=AVEVA%2Fsample-adh-waveform-angular&branchName=main)](https://dev.azure.com/AVEVA-VSTS/Cloud%20Platform/_build/latest?definitionId=16147&repoName=AVEVA%2Fsample-adh-waveform-angular&branchName=main)
 
 **WARNING:** The web server used in this sample is intended for use in testing or debugging sample applications locally. It has not been reviewed for security issues.
 
@@ -30,7 +30,7 @@ The SDS Service is secured by obtaining tokens from our OAuth2 identity provider
 
 The sample code includes several placeholder strings that must be modified with values you received from AVEVA. The sample is configured using two files, [oidc.config.placeholder.json](src/app/config/oidc.config.placeholder.json) and [sdsconfig.placeholder.json](src/app/config/sdsconfig.placeholder.json). Before editing, rename these files to `oidc.config.json` and `sdsconfig.placeholder.json`. This repository's `.gitignore` rules should prevent these files from ever being checked in to any fork or branch, to ensure sensitive information is not compromised.
 
-Register an Authorization Code client in ADH, or modify an existing client, and ensure that the registered client in ADH contains `http://localhost:4200/auth-callback.html` in the list of allowed Redirect URLs, and `https://localhost:4200/` in the list of allowed Logout URLs.
+Register an Authorization Code client in Cds, or modify an existing client, and ensure that the registered client in Cds contains `http://localhost:4200/auth-callback.html` in the list of allowed Redirect URLs, and `https://localhost:4200/` in the list of allowed Logout URLs.
 
 Replace the `client_id` in `src/app/config/oidc.config.json` with the Client ID of the client you registered.
 
@@ -68,9 +68,9 @@ To run the test use `ng e2e --webdriver-update=false`.
 
 ### Community
 
-If you would like to see an example of basic interactions with an ADH community, enter an existing community id in the `CommunityId` field of the configuration. Make sure to also grant the appropriate "Community Member" role to the Client-Credentials Client used by the sample. If you have not yet created a community, see the [documentation](https://docs.osisoft.com/bundle/ocs/page/communities/create-a-community.html) for instructions. Entering a community id will enable three additional steps in the sample.
+If you would like to see an example of basic interactions with an Cds community, enter an existing community id in the `CommunityId` field of the configuration. Make sure to also grant the appropriate "Community Member" role to the Client-Credentials Client used by the sample. If you have not yet created a community, see the [documentation](https://docs.aveva.com/bundle/aveva-data-hub/page/1263169.html) for instructions. Entering a community id will enable three additional steps in the sample.
 
-If you are not using ADH communities, leave the `communityId` property empty.
+If you are not using Cds communities, leave the `communityId` property empty.
 
 ## Running the example
 
@@ -476,6 +476,6 @@ in the console.
 
 Tested using Node 10.16.0 x64 and Cypress 10.6.0
 
-For the main ADH waveform samples page [ReadMe](https://github.com/osisoft/OSI-Samples-OCS/blob/main/docs/SDS_WAVEFORM.md)  
-For the main ADH samples page [ReadMe](https://github.com/osisoft/OSI-Samples-OCS)  
-For the main AVEVA samples page [ReadMe](https://github.com/osisoft/OSI-Samples)
+For the main Cds waveform samples page [ReadMe](https://github.com/AVEVA/AVEVA-Samples-CloudOperations/blob/main/docs/SDS_WAVEFORM.md)  
+For the main Cds samples page [ReadMe](https://github.com/AVEVA/AVEVA-Samples-CloudOperations)  
+For the main AVEVA samples page [ReadMe](https://github.com/AVEVA/AVEVA-Samples)
