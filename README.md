@@ -2,7 +2,7 @@
 
 **Version:** 1.4.8
 
-[![Build Status](https://dev.azure.com/osieng/engineering/_apis/build/status/product-readiness/ADH/aveva.sample-adh-waveform-angular?branchName=main)](https://dev.azure.com/osieng/engineering/_build/latest?definitionId=2626&branchName=main)
+[![Build Status](https://dev.azure.com/AVEVA-VSTS/Cloud%20Platform/_apis/build/status%2Fproduct-readiness%2FADH%2FAVEVA.sample-adh-waveform-angular?repoName=AVEVA%2Fsample-adh-waveform-angular&branchName=main)](https://dev.azure.com/AVEVA-VSTS/Cloud%20Platform/_build/latest?definitionId=16147&repoName=AVEVA%2Fsample-adh-waveform-angular&branchName=main)
 
 **WARNING:** The web server used in this sample is intended for use in testing or debugging sample applications locally. It has not been reviewed for security issues.
 
@@ -30,7 +30,7 @@ The SDS Service is secured by obtaining tokens from our OAuth2 identity provider
 
 The sample code includes several placeholder strings that must be modified with values you received from AVEVA. The sample is configured using two files, [oidc.config.placeholder.json](src/app/config/oidc.config.placeholder.json) and [sdsconfig.placeholder.json](src/app/config/sdsconfig.placeholder.json). Before editing, rename these files to `oidc.config.json` and `sdsconfig.placeholder.json`. This repository's `.gitignore` rules should prevent these files from ever being checked in to any fork or branch, to ensure sensitive information is not compromised.
 
-Register an Authorization Code client in ADH, or modify an existing client, and ensure that the registered client in ADH contains `http://localhost:4200/auth-callback.html` in the list of allowed Redirect URLs, and `https://localhost:4200/` in the list of allowed Logout URLs.
+Register an Authorization Code client in Cds, or modify an existing client, and ensure that the registered client in Cds contains `http://localhost:4200/auth-callback.html` in the list of allowed Redirect URLs, and `https://localhost:4200/` in the list of allowed Logout URLs.
 
 Replace the `client_id` in `src/app/config/oidc.config.json` with the Client ID of the client you registered.
 
@@ -68,9 +68,9 @@ To run the test use `ng e2e --webdriver-update=false`.
 
 ### Community
 
-If you would like to see an example of basic interactions with an ADH community, enter an existing community id in the `CommunityId` field of the configuration. Make sure to also grant the appropriate "Community Member" role to the Client-Credentials Client used by the sample. If you have not yet created a community, see the [documentation](https://docs.osisoft.com/bundle/ocs/page/communities/create-a-community.html) for instructions. Entering a community id will enable three additional steps in the sample.
+If you would like to see an example of basic interactions with an Cds community, enter an existing community id in the `CommunityId` field of the configuration. Make sure to also grant the appropriate "Community Member" role to the Client-Credentials Client used by the sample. If you have not yet created a community, see the [documentation](https://docs.aveva.com/bundle/aveva-data-hub/page/1263169.html) for instructions. Entering a community id will enable three additional steps in the sample.
 
-If you are not using ADH communities, leave the `communityId` property empty.
+If you are not using Cds communities, leave the `communityId` property empty.
 
 ## Running the example
 
@@ -107,7 +107,7 @@ Since this sample runs in the browser, most browsers will automatically add the 
 
 ## Create an SdsType
 
-To use SDS, you define SdsTypes that describe the kinds of data you want to store in SdsStreams. SdsTypes are the model that define SdsStreams. SdsTypes can define simple atomic types, such as integers, floats, or strings, or they can define complex types by grouping other SdsTypes. For more information about SdsTypes, refer to the [SDS documentation](https://ocs-docs.osisoft.com/Content_Portal/Documentation/SequentialDataStore/Data_Store_and_SDS.html).
+To use SDS, you define SdsTypes that describe the kinds of data you want to store in SdsStreams. SdsTypes are the model that define SdsStreams. SdsTypes can define simple atomic types, such as integers, floats, or strings, or they can define complex types by grouping other SdsTypes. For more information about SdsTypes, refer to the [SDS documentation](https://docs.aveva.com/bundle/data-hub/page/developer-guide/sequential-data-store-dev/sds-lp-dev.html).
 
 In the sample code, the SdsType representing WaveData is defined in the buildWaveDataType method of datasrc.component.ts. WaveData contains properties of integer and double atomic types. The construction begins by defining a base SdsType for each atomic type.
 
@@ -231,7 +231,7 @@ this.sdsService.insertValues(streamId, list);
 ```
 
 The SDS REST API provides many more types of data insertion calls beyond
-those demonstrated in this application. Refer to the [SDS documentation](https://ocs-docs.osisoft.com/Content_Portal/Documentation/SequentialDataStore/Data_Store_and_SDS.html) for
+those demonstrated in this application. Refer to the [SDS documentation](https://docs.aveva.com/bundle/data-hub/page/developer-guide/sequential-data-store-dev/sds-lp-dev.html) for
 more information on available REST API calls.
 
 ## Retrieve Values from a Stream
@@ -269,7 +269,7 @@ getRangeValues(streamId: string, start, count, boundary: SdsBoundaryType, stream
 
 - **start** is the increment by which the retrieval will happen.
 - **count** is how many values you wish to have returned.
-- **boundary** is a `SdsBoundaryType` value that determines the behavior if the starting index cannot be found. Refer the to the [SDS documentation](https://ocs-docs.osisoft.com/Content_Portal/Documentation/SequentialDataStore/Data_Store_and_SDS.html) for more information about SdsBoundaryTypes.
+- **boundary** is a `SdsBoundaryType` value that determines the behavior if the starting index cannot be found. Refer the to the [SDS documentation](https://docs.aveva.com/bundle/data-hub/page/developer-guide/sequential-data-store-dev/sds-lp-dev.html) for more information about SdsBoundaryTypes.
 
 The `getRangeValues` method is called as shown :
 
@@ -308,14 +308,14 @@ this.sdsService.getRangeValuesHeaders(
 ### Get Sampled Values
 
 Sampling allows retrieval of a representative sample of data between a start and end index. Sampling is driven by a specified property or properties of the stream's Sds Type. Property types that cannot be interpolated do not support sampling requests. Strings are an example of a property that
-cannot be interpolated. For more information see [Interpolation.](https://ocs-docs.osisoft.com/Content_Portal/Documentation/SequentialDataStore/SDS_Types.html#interpolation) Here is the request:
+cannot be interpolated. For more information see [Interpolation.](https://docs.aveva.com/bundle/data-hub/page/developer-guide/sequential-data-store-dev/sds-read-data.html?_gl=1*b4w3v6*_up*MQ..*_ga*MTk0OTU3MTM2MS4xNzIxMTQzMTI0*_ga_2E8P7THCR4*MTcyMTE0MzEyMy4xLjAuMTcyMTE0MzEyMy4wLjAuMA..*_ga_PNW2Q7E2B0*MTcyMTE0MzEyMy4xLjAuMTcyMTE0MzEyMy4wLjAuMA..#interpolation) Here is the request:
 
 ```js
 getSampledValues(streamId: string, start, end, intervals, sampleBy, filter: string = '', streamViewId=''): Observable<any>
 ```
 
 - Parameters are the SdsStream Id, the starting and ending index values for the desired window, the number of intervals to select from, the property or properties to use when sampling, an optional filter by expression, and an optional streamViewId.
-- Note: This method, implemented for example purposes in `SdsClient`, does not include support for SdsBoundaryTypes. For more information about SdsBoundaryTypes and how to implement them with sampling, refer to the [SDS documentation](https://ocs-docs.osisoft.com/Content_Portal/Documentation/SequentialDataStore/Data_Store_and_SDS.html)
+- Note: This method, implemented for example purposes in `SdsClient`, does not include support for SdsBoundaryTypes. For more information about SdsBoundaryTypes and how to implement them with sampling, refer to the [SDS documentation](https://docs.aveva.com/bundle/data-hub/page/developer-guide/sequential-data-store-dev/sds-lp-dev.html)
 
 Here is how it is called:
 
@@ -388,7 +388,7 @@ this.stream.PropertyOverrides = [propertyOverride];
 this.sdsService.updateStream(this.stream);
 ```
 
-The process consists of two steps. First, the Property Override must be created, then the stream must be updated. Note that the sample retrieves three data points before and after updating the stream to show that it has changed. See the [SDS documentation](https://ocs-docs.osisoft.com/Content_Portal/Documentation/SequentialDataStore/Data_Store_and_SDS.html) for more information about SDS Property Overrides.
+The process consists of two steps. First, the Property Override must be created, then the stream must be updated. Note that the sample retrieves three data points before and after updating the stream to show that it has changed. See the [SDS documentation](https://docs.aveva.com/bundle/data-hub/page/developer-guide/sequential-data-store-dev/sds-lp-dev.html) for more information about SDS Property Overrides.
 
 ## SdsStreamViews
 
@@ -476,6 +476,6 @@ in the console.
 
 Tested using Node 10.16.0 x64 and Cypress 10.6.0
 
-For the main ADH waveform samples page [ReadMe](https://github.com/osisoft/OSI-Samples-OCS/blob/main/docs/SDS_WAVEFORM.md)  
-For the main ADH samples page [ReadMe](https://github.com/osisoft/OSI-Samples-OCS)  
-For the main AVEVA samples page [ReadMe](https://github.com/osisoft/OSI-Samples)
+For the main Cds waveform samples page [ReadMe](https://github.com/AVEVA/AVEVA-Samples-CloudOperations/blob/main/docs/SDS_WAVEFORM.md)  
+For the main Cds samples page [ReadMe](https://github.com/AVEVA/AVEVA-Samples-CloudOperations)  
+For the main AVEVA samples page [ReadMe](https://github.com/AVEVA/AVEVA-Samples)
